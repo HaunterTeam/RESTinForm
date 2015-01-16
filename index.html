@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <title>RESTinForm</title>
+    <!-- Logo Font -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/weather-icons.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-git2.min.js"></script>
+    <script type="text/javascript">
+
+    var img_urls = [
+      "http://c2.staticflickr.com/6/5606/15637909759_cc4b46f44d_h.jpg"
+    ]
+    </script>
+  </head>
+  <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '876509135716754',
+          xfbml      : true,
+          version    : 'v2.2'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id='fb-root' data-appid='876509135716754' data-namespace='restinform'></div>
+    <div id="flickr_bg">
+      <div class="shadow_overlay">
+        <span class="logo"><span class="oswaldbold">REST</span>inForm</span>
+        <section id="first">
+          <div class="center">
+            <h1 class="title">How do you feel today?</h1>
+            <span class="motivational_quote">Please, log in. We will plan your next 3 days!</span>
+            <!-- <span class="motivational_quote">Insert you weight, we will plan your next 3 days!</span> -->
+            <!-- <h2>Pasta</h2> -->
+            <br><br>
+            <fb:login-button scope="public_profile" onlogin="checkLoginState();">
+            </fb:login-button>
+
+            <!-- <div class="fb-login-button" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div> -->
+            <br><br>
+            <div id="status">
+            </div>
+
+          </div>
+          <div class="scroll_down">
+            <span>SCROLL DOWN</span>
+            <span class="scroll_arrow"></span>
+          </div>
+        </section>
+        <section id="second">
+
+                <div class="weather-table group">
+
+                    <!-- FIRST DAY -->
+                    <div class="block fl">
+                        <div class="weather-icon">
+                             <i class="wi wi-day-lightning"></i>
+                        </div>
+
+                        <span class="title">DAY 1</span>
+
+                        <!-- CALENDAR -->
+                        <ul class="calendar">
+                            <li>8.00</li>
+                            <li>9.00</li>
+                            <li>10.00</li>
+                            <li>11.00</li>
+                        </ul>
+                    </div>
+
+                    <!-- SECOND DAY -->
+                    <div class="block fl">
+                        <div class="weather-icon">
+                             <i class="wi wi-day-lightning"></i>
+                        </div>
+
+                        <span class="title">DAY 2</span>
+
+                        <!-- CALENDAR -->
+                        <ul class="calendar">
+                            <li>8.00</li>
+                            <li>9.00</li>
+                            <li>10.00</li>
+                            <li>11.00</li>
+                        </ul>
+                    </div>
+
+                    <!-- THIRD DAY -->
+                    <div class="block fl">
+                        <div class="weather-icon">
+                             <i class="wi wi-day-lightning"></i>
+                        </div>
+
+                        <span class="title">DAY 3</span>
+
+                        <!-- CALENDAR -->
+                        <ul class="calendar">
+                            <li>8.00</li>
+                            <li>9.00</li>
+                            <li>10.00</li>
+                            <li>11.00</li>
+                        </ul>
+                    </div>
+                </div>
+
+        </section>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="assets/js/social.js"></script>
+</html>

@@ -1,0 +1,214 @@
+
+html, body {
+	width: 100%;
+	min-width: 100%;
+	height: 100%;
+	min-height: 100%;
+	margin: 0 auto;
+	padding: 0px 0px 0px 0px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	color: #ecf0f1;
+}
+
+#flickr_bg {
+	width: 100%;
+	height: 100%;
+	background-image: url("http://asiastreetfood.com/wp-content/uploads/2014/06/BanhMi.jpg");
+	background-size: cover;
+	margin: 0px;
+	padding: 0px;
+	margin: 0 auto;
+	padding: 0px 0px 0px 0px;
+}
+
+.shadow_overlay {
+	background: none repeat scroll 0 0 rgba(0%, 0%, 0%, 0.3);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 5;
+}
+
+#first {
+	height: 100%;
+	width: 100%;
+}
+
+.logo {
+	position: absolute;
+	z-index: 10;
+	top: 40px;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	font-style: italic;
+	font-size: 16px;
+}
+
+.oswaldbold {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 700;
+	font-size: 14px;
+	font-style: normal;
+}
+
+.center {
+	margin: 0 auto;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%); /* Safari and Chrome */
+   	-moz-transform: translateY(-50%); /* Firefox */
+    -ms-transform: translateY(-50%); /* IE 9 */
+    -o-transform: translateY(-50%); /* Opera */
+    transform: translateY(-50%);
+	width: 100%;
+}
+
+.center .title {
+	font-weight: 100;
+	margin: 0px;
+	font-size: 60px;
+	/*color: #ecf0f1;*/
+}
+
+.center .motivational_quote {
+	font-weight: 300;
+	margin: 0 auto;
+	font-size: 16px;
+}
+
+.center h2 {
+	margin: 20px;
+	margin-bottom: 50px;
+	font-weight: 300;
+	font-size: 60px;
+	/*color: #ecf0f1;*/
+}
+
+.scroll_down {
+	font-weight: 100;
+	font-size: 10px;
+	text-transform: uppercase;
+	position: absolute;
+	z-index: 10;
+	bottom: 40px;
+	display: block;
+	text-align: center;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+    -webkit-animation: scrollupdown 0.8s linear 1s infinite alternate; /* Chrome, Safari, Opera */
+    animation: scrollupdown 0.8s linear 1s infinite alternate; /* Standard syntax */
+}
+
+.scroll_arrow {
+	display: block;
+	width: 25px;
+	height: 13px;
+	background-image: url("../img/scroll_down.png");
+	background-size: 100%;
+	margin: 5px auto;
+}
+
+/* Animations ------------------------------ */
+
+@-webkit-keyframes scrollupdown { /* Chrome, Safari, Opera */
+	from 	{ bottom: 40px; }
+	to 		{ bottom: 50px; }
+}
+
+@keyframes scrollupdown { /* Standard syntax */
+	from 	{ bottom: 40px; }
+	to 		{ bottom: 50px; }
+}
+
+/* weather tabs */
+
+.fl{ float:left; }
+.fr{ float: right; }
+
+.group:before,
+.group:after {
+    content: "";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+}
+
+.group {
+    zoom: 1;  /*For IE 6/7 (trigger hasLayout) */
+}
+
+.weather-icon {
+	position: relative;
+	top: -40px;
+}
+
+.weather-table {
+    width: 80%;
+    margin: 50px auto;
+    text-align: center;
+    padding: 10px;
+    padding-right: 0;
+}
+
+.weather-table .heading{
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    margin-bottom: 4rem;
+}
+.block{
+    width: 30%;    
+    margin: 0 15px;
+    /*overflow: hidden;*/
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #3498db;
+    background: #3498db;
+}
+
+/*Shared properties*/
+.title,
+.weather-footer{
+    color: #FEFEFE;
+    text-transform: capitalize;
+    /*line-height: 3;*/
+    position: relative;
+}
+/*arrow creation*/
+.content:after, .content:before, .weather-footer:before, .weather-footer:after {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+.weather-footer:after,
+.weather-footer:before{
+    top:0;
+}
+.weather-footer:after {
+	border-color: rgba(136, 183, 213, 0);	
+	border-width: 5px;
+	margin-left: -5px;
+}
+.calendar{
+    list-style-type: none;    
+    background: #FFFFFF;
+    text-align: left;
+    color: #000;
+    padding:30px 22%;
+    font-size: 0.9rem;
+}
+.weather-footer{
+    font-size: 0.95rem;
+    text-transform: capitalize;
+}
