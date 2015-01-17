@@ -23,26 +23,31 @@ a:focus {
 
 #flickr_bg {
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
 	background-image: url("http://asiastreetfood.com/wp-content/uploads/2014/06/BanhMi.jpg");
 	background-size: cover;
 	margin: 0px;
 	padding: 0px;
 	margin: 0 auto;
 	padding: 0px 0px 0px 0px;
+	z-index: 2;
 }
 
 .shadow_overlay {
+	/*background: #000;*/
 	background: none repeat scroll 0 0 rgba(0%, 0%, 0%, 0.3);
 	width: 100%;
-	height: 100%;
-	position: absolute;
-	z-index: 5;
+	min-height: 100%;
+	position: fixed;
 }
 
 #first {
-	height: 100%;
-	width: 100%;
+	height: 80%;
+}
+
+#second {
+	display: none;
+	padding-bottom: 40px;
 }
 
 .logo {
@@ -76,25 +81,23 @@ a:focus {
 	width: 100%;
 }
 
-.center .title {
+.center #title {
 	font-weight: 100;
 	margin: 0px;
-	font-size: 60px;
-	/*color: #ecf0f1;*/
+	font-size: 65px;
+	line-height: 2;
 }
 
-.center .motivational_quote {
+.center .motivational_quote,
+.center .subtitle {
 	font-weight: 300;
 	margin: 0 auto;
 	font-size: 16px;
 }
 
-.center h2 {
-	margin: 20px;
-	margin-bottom: 50px;
-	font-weight: 300;
-	font-size: 60px;
-	/*color: #ecf0f1;*/
+.center .motivational_quote {
+	display: none;
+	font-size: 24px;
 }
 
 .fb-login-button {
@@ -171,6 +174,13 @@ a:focus {
 	top: -40px;
 }
 
+.weather-icon i {
+	background: #fff;
+	border-radius: 2px;
+	font-size: 40px;
+	padding: 5px;
+}
+
 .weather-table {
     width: 80%;
     margin: 50px auto;
@@ -184,27 +194,29 @@ a:focus {
     font-size: 1.3rem;
     margin-bottom: 4rem;
 }
+
 .block{
     width: 30%;    
     margin: 0 15px;
     /*overflow: hidden;*/
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid #fff;
+    /*
     border: 1px solid #3498db;
     background: #3498db;
+    */
 }
 
-/*Shared properties*/
-.title,
-.weather-footer{
+.block .title {
     color: #FEFEFE;
     text-transform: capitalize;
-    /*line-height: 3;*/
     position: relative;
 }
-/*arrow creation*/
-.content:after, .content:before, .weather-footer:before, .weather-footer:after {
+
+.content:after, .content:before, {
 	top: 100%;
 	left: 50%;
 	border: solid transparent;
@@ -214,24 +226,12 @@ a:focus {
 	position: absolute;
 	pointer-events: none;
 }
-.weather-footer:after,
-.weather-footer:before{
-    top:0;
-}
-.weather-footer:after {
-	border-color: rgba(136, 183, 213, 0);	
-	border-width: 5px;
-	margin-left: -5px;
-}
+
 .calendar{
     list-style-type: none;    
-    background: #FFFFFF;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
     text-align: left;
     color: #000;
     padding:30px 22%;
     font-size: 0.9rem;
-}
-.weather-footer{
-    font-size: 0.95rem;
-    text-transform: capitalize;
 }
