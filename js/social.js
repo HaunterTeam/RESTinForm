@@ -65,6 +65,7 @@ function send_request() {
   $.ajax({
     type: "POST",
     crossDomain: true,
+    dataType: "jsonp",
     jsonp: false,
     jsonpCallback: "succ",
     headers: { 
