@@ -65,7 +65,7 @@ function send_request() {
   $.ajax({
     type: "POST",
     url: "http://127.0.0.1:8000/project-director/facebook",
-    data: myObject,
+    data: JSON.stringify(myObject),
     success: function(data)
     {
       var obj = jQuery.parseJSON(data);
