@@ -65,6 +65,7 @@ function send_request() {
   $.ajax({
     type: "POST",
     dataType: "json",
+    contentType: false,
     url: "http://127.0.0.1:8000/project-director/facebook",
     data: JSON.stringify(myObject),
     success: function(data)
