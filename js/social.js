@@ -63,15 +63,9 @@ function send_request() {
   alert(access_token);
 
   $.ajax({
-    type: "POST",
     crossDomain: true,
-    dataType: "jsonp",
-    jsonp: false,
-    jsonpCallback: "succ",
-    headers: { 
-        'Accept': 'application/json',
-        'Content-Type': 'application/json' 
-    },
+    type:'POST',
+    dataType: 'jsonp',
     url: "http://127.0.0.1:8000/project-director/facebook",
     data: JSON.stringify(myObject),
     success: function(data)
