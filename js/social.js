@@ -66,7 +66,7 @@ function send_request() {
     type: "POST",
     crossDomain: true,
     jsonp: false,
-    jsonpCallback: "succ" 
+    jsonpCallback: "succ",
     headers: { 
         'Accept': 'application/json',
         'Content-Type': 'application/json' 
