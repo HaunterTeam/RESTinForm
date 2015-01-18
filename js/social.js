@@ -64,7 +64,7 @@ function send_request() {
 
   $.ajax({
     type: "POST",
-    dataType: "json",
+    dataType: "jsonp",
     headers: { 
         'Accept': 'application/json',
         'Content-Type': 'application/json' 
