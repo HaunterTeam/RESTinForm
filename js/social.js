@@ -64,8 +64,9 @@ function send_request() {
 
   $.ajax({
     type: "POST",
-    dataType: "json",
-    crossDomain: true,
+    dataType: 'jsonp',
+    jsonpCallback: 'succ',
+    jsonp: 'callback',
     headers: { 
         'Accept': 'application/json',
         'Content-Type': 'application/json' 
@@ -91,5 +92,12 @@ function send_request() {
     // }
   });
 
+}
+
+function succ(data) {
+  var obj = jQuery.parseJSON(data);
+      alert(obj.id);
+      alert(obj.fist_name);
+      alert(obj.image_url);
 }
 
