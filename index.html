@@ -40,19 +40,49 @@
       var congrats = start[start_index] + middle[middle_index] + end[end_index];
 
       $(document).ready(function(){
-        $(".fb-login-button").click(function(){
+        $(".fb-login").click(function(){
           $(this).hide();
-          $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
-          $('#quote').text(congrats)
-          $('.motivational_quote').show();
-          $('#title').text(food_name[food_index]);
-          $('.subtitle').hide();
-          $('#second').show();
+          // $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
+          $('#fb-image').show();
+          // $('#quote').text(congrats)
+          // $('.motivational_quote').show();
+          $('#title').text("Hi Roberto. Insert your health profile!");
+          $('.subtitle').text("Height is in cm while Weight is in kg.");
+          $('#form').show();
+          // $('.center').addClass('results');
         });
 
         $.stellar({
           horizontalScrolling: false,
           verticalOffset: 0
+        });
+
+        $('#form').submit(function(e) {
+
+          e.preventDefault();
+
+          $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/project-director/phrase",
+            data: $('#form-test').serialize(),
+            success: function(data)
+            {
+              var obj = jQuery.parseJSON(data);
+              alert(obj.id);
+              alert(obj.fist_name);
+              alert(obj.image_url);
+              // $('body').append(data);
+              // if(err == "Errore nell'invio dell'e-mail." || err == "E-mail non valida.") {
+              //   $('#form-send-message').addClass('form-send-errors')
+              // }
+              // else {
+              //   $('#form-send-message').addClass('form-send-success');
+              // }
+            }//,
+            // error: function(error) {
+            //   alert(error);
+            // }
+          });
         });
 
       });
@@ -81,85 +111,86 @@
     <div class="shadow_overlay"></div>
     <div id="flickr_bg" data-stellar-background-ratio="0.5">
         <div id="first">
-          <!-- <span class="logo"><span class="oswaldbold">REST</span>inForm</span> -->
+          <span class="logo"><span class="oswaldbold">REST</span>inForm</span>
           <div class="center">
-
+            <div id="fb-image" class="circle"></div>
             <span id="quote" class="motivational_quote"></span>
-            <h1 id="title">How do you feel today?</h1>
+            <span id="title">How do you feel today?</span>
             <span class="subtitle">Please, log in. We will plan your next 3 days!</span>
             <span class="motivational_quote">Here you are the plan for your next 3 days!</span>
+            <a class="button fb-login" onclick="checkLoginState();">JOIN USING <b>FACEBOOK</b></a>
+            <form id="form" role="form" method="GET" name="contact_form" action="http://127.0.0.1:8000/project-director/phrase">
+              <ul>
+                <li>
+                  <input class="input-value" type="number" step="any" placeholder="Height" name="input-height"/>
+                </li>
+                <li>
+                  <input class="input-value" type="number" step="any" placeholder="Weight" name="input-weight"/>
+                </li>
+              </ul>
+              <button class="button submit-button" type="submit" value="Submit">Done</button>
+            </form>
             <br><br>
-            <a class="fb-login-button">JOIN USING <b>FACEBOOK</b></a>
-            <!-- onclick="checkLoginState();" -->
-
-            <br><br>
-            <!-- <fb:login-button scope="public_profile" onlogin="checkLoginState();">
-            </fb:login-button> -->
-
-            <!-- <div class="fb-login-button" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div> -->
             <div id="status"></div>
-
           </div>
-          <!-- <div class="scroll_down">
+          <!--
+          <div class="scroll_down">
             <span>SCROLL DOWN</span>
             <span class="scroll_arrow"></span>
-          </div> -->
+          </div>
+          -->
         </div>
         <div id="second">
-
-                <div class="weather-table group">
-
-                    <!-- FIRST DAY -->
-                    <div class="block fl">
-                        <div class="weather-icon">
-                             <i class="wi wi-day-lightning"></i>
-                        </div>
-
-                        <span class="title">DAY 1</span>
-
-                        <!-- CALENDAR -->
-                        <ul class="calendar">
-                            <li>8.00</li>
-                            <li>9.00</li>
-                            <li>10.00</li>
-                            <li>11.00</li>
-                        </ul>
-                    </div>
-
-                    <!-- SECOND DAY -->
-                    <div class="block fl">
-                        <div class="weather-icon">
-                             <i class="wi wi-day-lightning"></i>
-                        </div>
-
-                        <span class="title">DAY 2</span>
-
-                        <!-- CALENDAR -->
-                        <ul class="calendar">
-                            <li>8.00</li>
-                            <li>9.00</li>
-                            <li>10.00</li>
-                            <li>11.00</li>
-                        </ul>
-                    </div>
-
-                    <!-- THIRD DAY -->
-                    <div class="block fl">
-                        <div class="weather-icon">
-                             <i class="wi wi-day-lightning"></i>
-                        </div>
-
-                        <span class="title">DAY 3</span>
-
-                        <!-- CALENDAR -->
-                        <ul class="calendar">
-                            <li>8.00</li>
-                            <li>9.00</li>
-                            <li>10.00</li>
-                            <li>11.00</li>
-                        </ul>
-                    </div>
+          <div class="weather-table group">
+            <!-- FIRST DAY -->
+            <div class="block fl">
+                <div class="weather-icon">
+                     <i class="wi wi-day-lightning"></i>
                 </div>
+
+                <span class="title">DAY 1</span>
+
+                <!-- CALENDAR -->
+                <ul class="calendar">
+                    <li>8.00</li>
+                    <li>9.00</li>
+                    <li>10.00</li>
+                    <li>11.00</li>
+                </ul>
+            </div>
+            <!-- SECOND DAY -->
+            <div class="block fl">
+                <div class="weather-icon">
+                     <i class="wi wi-day-lightning"></i>
+                </div>
+
+                <span class="title">DAY 2</span>
+
+                <!-- CALENDAR -->
+                <ul class="calendar">
+                    <li>8.00</li>
+                    <li>9.00</li>
+                    <li>10.00</li>
+                    <li>11.00</li>
+                </ul>
+            </div>
+            <!-- THIRD DAY -->
+            <div class="block fl">
+                <div class="weather-icon">
+                     <i class="wi wi-day-lightning"></i>
+                </div>
+
+                <span class="title">DAY 3</span>
+
+                <!-- CALENDAR -->
+                <ul class="calendar">
+                    <li>8.00</li>
+                    <li>9.00</li>
+                    <li>10.00</li>
+                    <li>11.00</li>
+                </ul>
+            </div>
+          </div>
       </div>
     </div>
   </body>
