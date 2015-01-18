@@ -61,10 +61,15 @@
 
           e.preventDefault();
 
+          var myObject = new Object();
+          myObject.token = accessToken;
+
+          alert(accessToken);
+
           $.ajax({
             type: "GET",
-            url: "http://127.0.0.1:8000/project-director/phrase",
-            data: $('#form-test').serialize(),
+            url: "http://127.0.0.1:8000/project-director/facebook",
+            data: myObject,
             success: function(data)
             {
               var obj = jQuery.parseJSON(data);
