@@ -42,13 +42,13 @@ function getProfileInfo() {
   // FB.api('/me?field=name,id,location', function(response) {
   //   alert('Successful login for: ' + response.name);
   // });
-  $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(result){
-    //response data are now in the result variable
-    console.log(result);
-    // alert("ID: " + result.info.id);
-    // alert("First name: "+ result.info.first_name);
-    // alert("Location: "+ result.info.location);
-  });
+  // $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(result){
+  //   //response data are now in the result variable
+  //   console.log(result);
+  //   // alert("ID: " + result.info.id);
+  //   // alert("First name: "+ result.info.first_name);
+  //   // alert("Location: "+ result.info.location);
+  // });
 }
 
 function send_request() {
