@@ -1,7 +1,7 @@
 # RESTinForm Frontend Side
 Frontend side for app hosted in https://restinform.herokuapp.com
 
-HTML, CSS, JQuery with Ajax Requests
+HTML, CSS, JQuery with Ajax Requests.
 The frontend talks to:
 - the Facebook Graph API through Facebook Javascript SDK in order to authenticate a user and gather his first name, his current location and his profile image.
 - the Director through an Ajax request with a jsonp parameter in order to enable cross-domain requests.
