@@ -1,5 +1,6 @@
-
 var access_token = "";
+var img_url = "";
+var first_name = "";
 
 function saveToken(accessToken) {
   access_token = accessToken;
@@ -39,12 +40,17 @@ function checkLoginState() {
 }
 
 function getProfileInfo() {
+
   FB.api('/me?field=name,id,location', function(response) {
-    alert('Successful login for: ' + response.name);
+    first_name = response.name;
+    $('#title').text("Hi " + first_name + ". Insert your health profile!");
   });
-  FB.api("/me/picture?type=normal&height=120&width=120&redirect=false&fields=url", function(response) {
-    alert('url: ' + response.url);
+
+  FB.api("/me/picture?type=normal&height=120&width=120&redirect=false", function(response) {
+    img_url = response.data.url;
+    $('#fb-image').css('background-image', response.data.url);
   });
+
   // $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(result){
   //   //response data are now in the result variable
   //   console.log(result);
@@ -146,7 +152,6 @@ function succ(data) {
 function updateView() {
   $('.fb-login').hide();
   $('#fb-image').show();
-  $('#title').text("Hi Roberto. Insert your health profile!");
   $('.subtitle').text("Height is in cm while Weight is in kg.");
   $('#form').show();
 }
