@@ -80,30 +80,30 @@ function send_request() {
 
   // alert(access_token);
 
-  // $.ajax({
-  //   crossDomain: true,
-  //   type:'POST',
-  //   dataType: 'jsonp',
-  //   url: "http://127.0.0.1:8000/project-director/facebook",
-  //   data: JSON.stringify(myObject),
-  //   success: function(data)
-  //   {
-  //     var obj = jQuery.parseJSON(data);
-  //     alert(obj.id);
-  //     alert(obj.fist_name);
-  //     alert(obj.image_url);
-  //     // $('body').append(data);
-  //     // if(err == "Errore nell'invio dell'e-mail." || err == "E-mail non valida.") {
-  //     //   $('#form-send-message').addClass('form-send-errors')
-  //     // }
-  //     // else {
-  //     //   $('#form-send-message').addClass('form-send-success');
-  //     // }
-  //   }//,
-  //   // error: function(error) {
-  //   //   alert(error);
-  //   // }
-  // });
+  $.ajax({
+    crossDomain: true,
+    type:'POST',
+    dataType: 'jsonp',
+    url: "http://127.0.0.1:8000/project-director/facebook",
+    data: JSON.stringify(myObject),
+    success: function(data)
+    {
+      var obj = jQuery.parseJSON(data);
+      alert(obj.id);
+      alert(obj.fist_name);
+      alert(obj.image_url);
+      // $('body').append(data);
+      // if(err == "Errore nell'invio dell'e-mail." || err == "E-mail non valida.") {
+      //   $('#form-send-message').addClass('form-send-errors')
+      // }
+      // else {
+      //   $('#form-send-message').addClass('form-send-success');
+      // }
+    }//,
+    // error: function(error) {
+    //   alert(error);
+    // }
+  });
 
   $('#form').hide();
   $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
