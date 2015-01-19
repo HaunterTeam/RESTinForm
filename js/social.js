@@ -41,14 +41,14 @@ function checkLoginState() {
 
 function getProfileInfo() {
 
-  FB.api('/me?field=name,id,location', function(response) {
+  FB.api('/me?field=id,first_name,location', function(response) {
     first_name = response.name;
     $('#title').text("Hi " + first_name + ". Insert your health profile!");
   });
 
   FB.api("/me/picture?type=normal&height=120&width=120&redirect=false", function(response) {
     img_url = response.data.url;
-    $('#fb-image').css('background-image', response.data.url);
+    $('#fb-image').css('background-image', 'url(' + response.data.url + ')');
   });
 
   // $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(result){

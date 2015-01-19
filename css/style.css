@@ -115,7 +115,7 @@ button {
 	border: 1px solid #ccc;
 	width: 120;
 	height: 120px;
-	background-image: url("https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p320x320/10520091_10202600973001909_4200011581913159751_n.jpg?oh=3a06baed2039e1c0f572e354c946fcf2&oe=55354CE9&__gda__=1428220988_b070af483742ec4121fcdd6095196562");
+	background-image: none;
 	background-size: 100% 100%;
 }
 
