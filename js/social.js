@@ -109,7 +109,7 @@ function send_request() {
     //response data are now in the result variable
     var obj = jQuery.parseJSON(result);
     alert(obj.info.id);
-    alert(obj.info.fist_name);
+    alert(obj.info.first_name);
     alert(obj.image.image_url);
   });
 
