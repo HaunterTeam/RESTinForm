@@ -122,6 +122,7 @@ function send_request() {
 }
 
 function succ(data) {
+  alert(obj);
   var obj = jQuery.parseJSON(data);
   alert(obj.id);
   alert(obj.fist_name);
