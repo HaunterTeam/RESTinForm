@@ -42,7 +42,7 @@ function checkLoginState() {
 function getProfileInfo() {
 
   FB.api('/me?field=id,first_name,location', function(response) {
-    first_name = response.name;
+    first_name = response.first_name;
     $('#title').text("Hi " + first_name + ". Insert your health profile!");
   });
 
