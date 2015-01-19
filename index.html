@@ -11,17 +11,6 @@
     <script type="text/javascript">
 
       $(document).ready(function(){
-        // $(".fb-login").click(function(){
-        //   $(this).hide();
-        //   // $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
-        //   $('#fb-image').show();
-        //   // $('#quote').text(congrats)
-        //   // $('.motivational_quote').show();
-        //   $('#title').text("Hi Roberto. Insert your health profile!");
-        //   $('.subtitle').text("Height is in cm while Weight is in kg.");
-        //   $('#form').show();
-        //   // $('.center').addClass('results');
-        // });
 
         $.stellar({
           horizontalScrolling: false,
@@ -29,11 +18,8 @@
         });
 
         $('#form').submit(function(e) {
-
           e.preventDefault();
-
           send_request();
-
         });
 
       });
@@ -70,7 +56,7 @@
             <span class="subtitle">Please, log in. We will plan your next 3 days!</span>
             <span class="motivational_quote">Here you are the plan for your next 3 days!</span>
             <a class="button fb-login" onclick="checkLoginState();">JOIN USING <b>FACEBOOK</b></a>
-            <form id="form" role="form" method="GET" name="contact_form" action="http://127.0.0.1:8000/project-director/phrase">
+            <form id="form" role="form" method="GET" name="contact_form" action="http://127.0.0.1:9091/project-director/">
               <ul>
                 <li>
                   <input class="input-value" type="number" step="any" placeholder="Height" name="input-height"/>

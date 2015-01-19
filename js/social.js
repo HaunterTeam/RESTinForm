@@ -21,11 +21,11 @@ function statusChangeCallback(response) {
   } else {
     FB.login(function(response) {
       if (response.authResponse ) {
-        saveToken();
+        saveToken(response.authResponse.accessToken);
         getProfileInfo();
         updateView();
       }
-    });
+    }, {scope: 'user_about_me,user_location'});
   }
 }
 
@@ -35,18 +35,19 @@ function statusChangeCallback(response) {
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
     statusChangeCallback(response);
-  });
+  }, {scope: 'user_about_me,user_location'});
 }
 
 function getProfileInfo() {
-  FB.api('/me?field=name,id', function(response) {
-    alert('Successful login for: ' + response.name);
-  });
-  $.getJSON("http://127.0.0.1:8000/project-director/facebook?callback=?&token=" + access_token, function(result){
+  // FB.api('/me?field=name,id,location', function(response) {
+  //   alert('Successful login for: ' + response.name);
+  // });
+  $.getJSON("http://127.0.0.1:8020/project-director/weather?token=" + access_token, function(result){
     //response data are now in the result variable
     console.log(result);
-    alert("First name: "+ result.info.first_name);
-    alert("Image url: "+ result.image.image_url);
+    // alert("ID: " + result.info.id);
+    // alert("First name: "+ result.info.first_name);
+    // alert("Location: "+ result.info.location);
   });
 }
 
