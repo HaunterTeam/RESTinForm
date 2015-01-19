@@ -107,7 +107,6 @@ function send_request() {
 
   $.getJSON("http://127.0.0.1:8000/project-director/facebook?callback=?&token=" + access_token, function(result){
     //response data are now in the result variable
-    console.log(result);
     var obj = jQuery.parseJSON(result);
     alert(obj.id);
     alert(obj.fist_name);
