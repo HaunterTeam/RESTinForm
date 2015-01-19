@@ -39,9 +39,12 @@ function checkLoginState() {
 }
 
 function getProfileInfo() {
-  // FB.api('/me?field=name,id,location', function(response) {
-  //   alert('Successful login for: ' + response.name);
-  // });
+  FB.api('/me?field=name,id,location', function(response) {
+    alert('Successful login for: ' + response.name);
+  });
+  FB.api("/me/picture?type=normal&height=120&width=120&redirect=false&fields=url", function(response) {
+    alert('url: ' + response.url);
+  });
   // $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(result){
   //   //response data are now in the result variable
   //   console.log(result);
