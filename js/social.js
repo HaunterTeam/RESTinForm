@@ -69,9 +69,9 @@ function send_request() {
     "Sei ingrassato rispetto a ieri, ",
     "Good work, ");
   var middle = new Array(
-    "e perche' fuori nevica ",
-    "e perche' PEJO e' un bel paesino ",
-    "e perche' sono stanco di scrivere ");
+    "and because it is cloudy",
+    "and because i am sad",
+    "and because i am happy");
   var end = new Array(
     "you deserve:",
     "you are allowed to eat:",
