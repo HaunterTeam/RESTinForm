@@ -53,7 +53,7 @@ button {
 }
 
 #first {
-	height: 80%;
+	height: 100%;
 }
 
 #second {
@@ -97,16 +97,16 @@ button {
 }
 
 .center.results {
-	top: 10%;
-	-webkit-transform: translateY(0%); /* Safari and Chrome */
-   	-moz-transform: translateY(0%); /* Firefox */
-    -ms-transform: translateY(0%); /* IE 9 */
-    -o-transform: translateY(0%); /* Opera */
-    transform: translateY(0%);
+	/*top: 10%;*/
+	-webkit-transform: translateY(-70%);
+   	-moz-transform: translateY(-70%);
+    -ms-transform: translateY(-70%);
+    -o-transform: translateY(-70%);
+    transform: translateY(-70%);
 }
 
 .center.results #fb-image {
-	margin-bottom: 20px;
+	margin: 20px auto;
 }
 
 .center .circle {
@@ -181,7 +181,7 @@ form ul li {
     text-align: center;
     background: rgba(255, 255, 255, 0.3);
     border: 1px solid #eee;
-    color: #fff;
+    color: #000;
     width: 140px;
 }
 
@@ -216,7 +216,7 @@ form ul li {
 	position: absolute;
 	z-index: 10;
 	bottom: 40px;
-	display: block;
+	display: none;
 	text-align: center;
 	margin: 0 auto;
 	left: 0;

@@ -1,28 +1,31 @@
 
 var access_token = "";
 
+function saveToken(accessToken) {
+  access_token = accessToken;
+}
+
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
+  
   console.log('statusChangeCallback');
   console.log(response);
-  // The response object is returned with a status field that lets the
-  // app know the current login status of the person.
-  // Full docs on the response object can be found in the documentation
-  // for FB.getLoginStatus().
+
+  // Logged into your app and Facebook.
   if (response.status === 'connected') {
-    // Logged into your app and Facebook.
-    alert(response.authResponse.accessToken);
-    access_token = response.authResponse.accessToken;
-    testAPI();
+    saveToken(response.authResponse.accessToken);
+    getProfileInfo();
+    updateView();
   } else if (response.status === 'not_authorized') {
-    // The person is logged into Facebook, but not your app.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this app.';
+    document.getElementById('status').innerHTML = 'Please log into this app.';
   } else {
-    // The person is not logged into Facebook, so we're not sure if
-    // they are logged into this app or not.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into Facebook.';
+    FB.login(function(response) {
+      if (response.authResponse ) {
+        saveToken();
+        getProfileInfo();
+        updateView();
+      }
+    });
   }
 }
 
@@ -35,21 +38,7 @@ function checkLoginState() {
   });
 }
 
-// Now that we've initialized the JavaScript SDK, we call 
-// FB.getLoginStatus().  This function gets the state of the
-// person visiting this page and can return one of three states to
-// the callback you provide.  They can be:
-//
-// 1. Logged into your app ('connected')
-// 2. Logged into Facebook, but not your app ('not_authorized')
-// 3. Not logged into Facebook and can't tell if they are logged into
-//    your app or not.
-//
-// These three cases are handled in the callback function.
-
-// Here we run a very simple test of the Graph API after login is
-// successful.  See statusChangeCallback() for when this call is made.
-function testAPI() {
+function getProfileInfo() {
   FB.api('/me?field=name,id', function(response) {
     alert('Successful login for: ' + response.name);
   });
@@ -60,39 +49,84 @@ function send_request() {
   var myObject = new Object();
   myObject.token = access_token;
 
-  alert(access_token);
+  var food_name = new Array("Arrosticini", "Piattone Gigante", "Paninazzo", "Carbonara", "Insalatina");
+  var images = new Array(
+    "http://www.hermestocchetti.com/sites/default/files/styles/fullsize/public/gallery/4-food-meat/p195bn87uf1gds1qrv1sc3o5c1nv34.jpg?itok=c1-Z_tur",
+    "http://www.hermestocchetti.com/sites/default/files/styles/fullsize/public/gallery/4-food-meat/p195bn87ufbhf1fs0ou112464m7.jpg?itok=EKAbMm1x",
+    "http://asiastreetfood.com/wp-content/uploads/2014/06/BanhMi.jpg",
+    "https://c1.staticflickr.com/5/4001/4283223635_da5e247b5e_b.jpg",
+    "https://c4.staticflickr.com/4/3709/9499573644_05a0e270fd_k.jpg"
+    );
 
-  $.ajax({
-    crossDomain: true,
-    type:'POST',
-    dataType: 'jsonp',
-    url: "http://127.0.0.1:8000/project-director/facebook",
-    data: JSON.stringify(myObject),
-    success: function(data)
-    {
-      var obj = jQuery.parseJSON(data);
-      alert(obj.id);
-      alert(obj.fist_name);
-      alert(obj.image_url);
-      // $('body').append(data);
-      // if(err == "Errore nell'invio dell'e-mail." || err == "E-mail non valida.") {
-      //   $('#form-send-message').addClass('form-send-errors')
-      // }
-      // else {
-      //   $('#form-send-message').addClass('form-send-success');
-      // }
-    }//,
-    // error: function(error) {
-    //   alert(error);
-    // }
-  });
+  var start = new Array(
+    "Sei dimagrito rispetto a ieri, ",
+    "Sei ingrassato rispetto a ieri, ",
+    "Good work, ");
+  var middle = new Array(
+    "e perche' fuori nevica ",
+    "e perche' PEJO e' un bel paesino ",
+    "e perche' sono stanco di scrivere ");
+  var end = new Array(
+    "you deserve:",
+    "you are allowed to eat:",
+    "today you have to eat:");
 
+  var start_index = Math.floor((Math.random() * 3));
+  var middle_index = Math.floor((Math.random() * 3));
+  var end_index = Math.floor((Math.random() * 3));
+  var food_index = Math.floor((Math.random() * 5));
+
+  var congrats = start[start_index] + middle[middle_index] + end[end_index];
+
+  // alert(access_token);
+
+  // $.ajax({
+  //   crossDomain: true,
+  //   type:'POST',
+  //   dataType: 'jsonp',
+  //   url: "http://127.0.0.1:8000/project-director/facebook",
+  //   data: JSON.stringify(myObject),
+  //   success: function(data)
+  //   {
+  //     var obj = jQuery.parseJSON(data);
+  //     alert(obj.id);
+  //     alert(obj.fist_name);
+  //     alert(obj.image_url);
+  //     // $('body').append(data);
+  //     // if(err == "Errore nell'invio dell'e-mail." || err == "E-mail non valida.") {
+  //     //   $('#form-send-message').addClass('form-send-errors')
+  //     // }
+  //     // else {
+  //     //   $('#form-send-message').addClass('form-send-success');
+  //     // }
+  //   }//,
+  //   // error: function(error) {
+  //   //   alert(error);
+  //   // }
+  // });
+
+  $('#form').hide();
+  $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
+  $('#quote').text(congrats);
+  $('.motivational_quote').show();
+  $('#title').text(food_name[food_index]);
+  $('.subtitle').hide();
+  $('.center').addClass('results');
+  $('.scroll_down').show();
+  $('#second').show();
 }
 
 function succ(data) {
   var obj = jQuery.parseJSON(data);
-      alert(obj.id);
-      alert(obj.fist_name);
-      alert(obj.image_url);
+  alert(obj.id);
+  alert(obj.fist_name);
+  alert(obj.image_url);
 }
 
+function updateView() {
+  $('.fb-login').hide();
+  $('#fb-image').show();
+  $('#title').text("Hi Roberto. Insert your health profile!");
+  $('.subtitle').text("Height is in cm while Weight is in kg.");
+  $('#form').show();
+}

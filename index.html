@@ -10,47 +10,18 @@
     <script type="text/javascript" src="http://markdalgleish.com/projects/stellar.js/js/stellar.js"></script>
     <script type="text/javascript">
 
-      var food_name = new Array("Arrosticini", "Piattone Gigante", "Paninazzo", "Carbonara", "Insalatina");
-      var images = new Array(
-        "http://www.hermestocchetti.com/sites/default/files/styles/fullsize/public/gallery/4-food-meat/p195bn87uf1gds1qrv1sc3o5c1nv34.jpg?itok=c1-Z_tur",
-        "http://www.hermestocchetti.com/sites/default/files/styles/fullsize/public/gallery/4-food-meat/p195bn87ufbhf1fs0ou112464m7.jpg?itok=EKAbMm1x",
-        "http://asiastreetfood.com/wp-content/uploads/2014/06/BanhMi.jpg",
-        "https://c1.staticflickr.com/5/4001/4283223635_da5e247b5e_b.jpg",
-        "https://c4.staticflickr.com/4/3709/9499573644_05a0e270fd_k.jpg"
-        );
-
-      var start = new Array(
-        "Sei dimagrito rispetto a ieri, ",
-        "Sei ingrassato rispetto a ieri, ",
-        "Bravo hai mantenuto il peso forma, ");
-      var middle = new Array(
-        "e perche' fuori nevica ",
-        "e perche' PEJO e' un bel paesino ",
-        "e perche' sono stanco di scrivere ");
-      var end = new Array(
-        "ti sei meritato:",
-        "puoi permetterti:",
-        "ti costringo a mangiare:");
-
-      var start_index = Math.floor((Math.random() * 3));
-      var middle_index = Math.floor((Math.random() * 3));
-      var end_index = Math.floor((Math.random() * 3));
-      var food_index = Math.floor((Math.random() * 5));
-
-      var congrats = start[start_index] + middle[middle_index] + end[end_index];
-
       $(document).ready(function(){
-        $(".fb-login").click(function(){
-          $(this).hide();
-          // $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
-          $('#fb-image').show();
-          // $('#quote').text(congrats)
-          // $('.motivational_quote').show();
-          $('#title').text("Hi Roberto. Insert your health profile!");
-          $('.subtitle').text("Height is in cm while Weight is in kg.");
-          $('#form').show();
-          // $('.center').addClass('results');
-        });
+        // $(".fb-login").click(function(){
+        //   $(this).hide();
+        //   // $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
+        //   $('#fb-image').show();
+        //   // $('#quote').text(congrats)
+        //   // $('.motivational_quote').show();
+        //   $('#title').text("Hi Roberto. Insert your health profile!");
+        //   $('.subtitle').text("Height is in cm while Weight is in kg.");
+        //   $('#form').show();
+        //   // $('.center').addClass('results');
+        // });
 
         $.stellar({
           horizontalScrolling: false,
@@ -113,12 +84,10 @@
             <br><br>
             <div id="status"></div>
           </div>
-          <!--
           <div class="scroll_down">
             <span>SCROLL DOWN</span>
             <span class="scroll_arrow"></span>
           </div>
-          -->
         </div>
         <div id="second">
           <div class="weather-table group">
