@@ -121,15 +121,15 @@ function send_request() {
   //   // }
   // });
 
-  // $.getJSON("http://127.0.0.1:8000/project-director/facebook?callback=?&token=" + access_token, function(result){
-  //   //response data are now in the result variable
-  //   console.log(result);
-  //   // var obj = jQuery.parseJSON(result);
-  //   // console.log("parsed");
-  //   console.log(result.info);
-  //   console.log(result.info.first_name);
-  //   console.log(result.image.image_url);
-  // });
+  $.getJSON("http://127.0.0.1:9091/project-director/facebook?callback=?&token=" + access_token, function(result){
+    //response data are now in the result variable
+    console.log(result);
+    // var obj = jQuery.parseJSON(result);
+    // console.log("parsed");
+    // console.log(result.info);
+    // console.log(result.info.first_name);
+    // console.log(result.image.image_url);
+  });
 
   $('#form').hide();
   $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
