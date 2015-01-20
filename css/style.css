@@ -325,9 +325,11 @@ form ul li {
 
 .calendar{
     list-style-type: none;    
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    /*background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);*/
     text-align: left;
-    color: #000;
+    color: #fefefe;
+    font-weight: 100;
+    text-transform: uppercase;
     padding:30px 22%;
     font-size: 0.9rem;
 }

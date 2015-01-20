@@ -8,9 +8,6 @@ function saveToken(accessToken) {
 
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
-  
-  console.log('statusChangeCallback');
-  console.log(response);
 
   // Logged into your app and Facebook.
   if (response.status === 'connected') {
@@ -18,7 +15,7 @@ function statusChangeCallback(response) {
     getProfileInfo();
     updateView();
   } else if (response.status === 'not_authorized') {
-    document.getElementById('status').innerHTML = 'Please log into this app.';
+    /* TODO */
   } else {
     FB.login(function(response) {
       if (response.authResponse ) {
@@ -40,7 +37,6 @@ function checkLoginState() {
 }
 
 function getProfileInfo() {
-
   FB.api('/me?field=id,first_name,location', function(response) {
     first_name = response.first_name;
     $('#title').text("Hi " + first_name + ". Insert your health profile!");
@@ -50,14 +46,6 @@ function getProfileInfo() {
     img_url = response.data.url;
     $('#fb-image').css('background-image', 'url(' + response.data.url + ')');
   });
-
-  // $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(result){
-  //   //response data are now in the result variable
-  //   console.log(result);
-  //   // alert("ID: " + result.info.id);
-  //   // alert("First name: "+ result.info.first_name);
-  //   // alert("Location: "+ result.info.location);
-  // });
 }
 
 function send_request() {
@@ -73,26 +61,6 @@ function send_request() {
     "https://c1.staticflickr.com/5/4001/4283223635_da5e247b5e_b.jpg",
     "https://c4.staticflickr.com/4/3709/9499573644_05a0e270fd_k.jpg"
     );
-
-  var start = new Array(
-    "Sei dimagrito rispetto a ieri, ",
-    "Sei ingrassato rispetto a ieri, ",
-    "Good work, ");
-  var middle = new Array(
-    "and because it is cloudy",
-    "and because i am sad",
-    "and because i am happy");
-  var end = new Array(
-    "you deserve:",
-    "you are allowed to eat:",
-    "today you have to eat:");
-
-  var start_index = Math.floor((Math.random() * 3));
-  var middle_index = Math.floor((Math.random() * 3));
-  var end_index = Math.floor((Math.random() * 3));
-  var food_index = Math.floor((Math.random() * 5));
-
-  var congrats = start[start_index] + middle[middle_index] + end[end_index];
 
   // alert(access_token);
 
@@ -121,32 +89,35 @@ function send_request() {
   //   // }
   // });
 
-  $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(result){
+  $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(response){
     //response data are now in the result variable
-    console.log(result);
-    // var obj = jQuery.parseJSON(result);
-    // console.log("parsed");
-    // console.log(result.info);
-    // console.log(result.info.first_name);
-    // console.log(result.image.image_url);
+
+    act1 = response.result[0].activityplan;
+    act2 = response.result[1].activityplan;
+    act3 = response.result[2].activityplan;
+
+    weather1 = response.result[0].weather;
+    weather2 = response.result[1].weather;
+    weather3 = response.result[2].weather;
+
+    $('#form').hide();
+    $('#flickr_bg').css('background-image', 'url("'+ images[0] +'")');
+    $('#quote').text(act1.phrase);
+    $('.motivational_quote').show();
+    $('#title').text(food_name[0]);
+    $('.subtitle').hide();
+    $('.center').addClass('results');
+    $('.scroll_down').show();
+
+    $('#block-day-1 .wi').addClass('wi-'+weather1.weather.toLowerCase());
+    $('#block-day-2 .wi').addClass('wi-'+weather2.weather.toLowerCase());
+    $('#block-day-3 .wi').addClass('wi-'+weather3.weather.toLowerCase());
+
+    $('#block-day-1 .calendar').text(act1.activity);
+    $('#block-day-2 .calendar').text(act1.activity);
+    $('#block-day-3 .calendar').text(act1.activity);
+    $('#second').show();
   });
-
-  $('#form').hide();
-  $('#flickr_bg').css('background-image', 'url("'+ images[food_index] +'")');
-  $('#quote').text(congrats);
-  $('.motivational_quote').show();
-  $('#title').text(food_name[food_index]);
-  $('.subtitle').hide();
-  $('.center').addClass('results');
-  $('.scroll_down').show();
-  $('#second').show();
-}
-
-function succ(data) {
-  var obj = jQuery.parseJSON(data);
-  alert(obj.id);
-  alert(obj.fist_name);
-  alert(obj.image_url);
 }
 
 function updateView() {

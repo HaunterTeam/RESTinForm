@@ -81,8 +81,8 @@
 .wi-day-sunny-overcast:before {
   content: "\f00c";
 }
-/* day-sunny -> clear sky */
-.wi-clear-sky:before {
+/* day-sunny -> clear */
+.wi-clear:before {
   content: "\f00d";
 }
 .wi-day-storm-showers:before {
@@ -231,8 +231,8 @@
 .wi-cloud-up:before {
   content: "\f040";
 }
-/* cloud -> scattered clouds */
-.wi-scattered-clouds:before {
+/* cloud -> clouds */
+.wi-clouds:before {
   content: "\f041";
 }
 .wi-degrees:before {
