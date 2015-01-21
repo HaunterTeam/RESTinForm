@@ -114,8 +114,8 @@ function send_request() {
     $('#block-day-3 .wi').addClass('wi-'+weather3.weather.toLowerCase());
 
     $('#block-day-1 .calendar').text(act1.activity);
-    $('#block-day-2 .calendar').text(act1.activity);
-    $('#block-day-3 .calendar').text(act1.activity);
+    $('#block-day-2 .calendar').text(act2.activity);
+    $('#block-day-3 .calendar').text(act3.activity);
     $('#second').show();
   });
 }
