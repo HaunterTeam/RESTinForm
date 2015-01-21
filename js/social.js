@@ -68,7 +68,7 @@ function send_request() {
     crossDomain: true,
     type:'POST',
     dataType: 'jsonp',
-    url: "http://127.0.0.1:8000/project-director/facebook",
+    url: "http://restindirectorservice.herokuapp.com/project-director/facebook",
     data: JSON.stringify(myObject),
     success: function(data)
     {
@@ -89,7 +89,7 @@ function send_request() {
     // }
   });
 
-  $.getJSON("http://127.0.0.1:9091/project-director/weather?callback=?&token=" + access_token, function(response){
+  $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response){
     //response data are now in the result variable
 
     act1 = response.result[0].activityplan;
