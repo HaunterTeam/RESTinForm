@@ -64,59 +64,70 @@ function send_request() {
 
   // alert(access_token);
 
-  $.ajax({
-    crossDomain: true,
-    type:'POST',
-    dataType: 'jsonp',
-    url: "http://restindirectorservice.herokuapp.com/project-director/facebook",
-    data: JSON.stringify(myObject),
-    success: function(data)
-    {
-      var obj = jQuery.parseJSON(data);
-      alert(obj.id);
-      alert(obj.fist_name);
-      alert(obj.image_url);
-      // $('body').append(data);
-      // if(err == "Errore nell'invio dell'e-mail." || err == "E-mail non valida.") {
-      //   $('#form-send-message').addClass('form-send-errors')
-      // }
-      // else {
-      //   $('#form-send-message').addClass('form-send-success');
-      // }
-    }//,
-    // error: function(error) {
-    //   alert(error);
-    // }
-  });
+  // $.ajax({
+  //   crossDomain: true,
+  //   type:'POST',
+  //   dataType: 'jsonp',
+  //   url: "http://restindirectorservice.herokuapp.com/project-director/facebook",
+  //   data: JSON.stringify(myObject),
+  //   success: function(data)
+  //   {
+  //     var obj = jQuery.parseJSON(data);
+  //     alert(obj.id);
+  //     alert(obj.fist_name);
+  //     alert(obj.image_url);
+  //     // $('body').append(data);
+  //     // if(err == "Errore nell'invio dell'e-mail." || err == "E-mail non valida.") {
+  //     //   $('#form-send-message').addClass('form-send-errors')
+  //     // }
+  //     // else {
+  //     //   $('#form-send-message').addClass('form-send-success');
+  //     // }
+  //   }//,
+  //   // error: function(error) {
+  //   //   alert(error);
+  //   // }
+  // });
 
-  $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response){
+
+  $('body').append("Richiesta p1");
+
+  $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
     //response data are now in the result variable
 
-    act1 = response.result[0].activityplan;
-    act2 = response.result[1].activityplan;
-    act3 = response.result[2].activityplan;
+    act1 = response_p1.result[0].activityplan;
+    act2 = response_p1.result[1].activityplan;
+    act3 = response_p1.result[2].activityplan;
 
-    weather1 = response.result[0].weather;
-    weather2 = response.result[1].weather;
-    weather3 = response.result[2].weather;
+    weather1 = response_p1.result[0].weather;
+    weather2 = response_p1.result[1].weather;
+    weather3 = response_p1.result[2].weather;
 
-    $('#form').hide();
-    $('#flickr_bg').css('background-image', 'url("'+ images[0] +'")');
-    $('#quote').text(act1.phrase);
-    $('.motivational_quote').show();
-    $('#title').text(food_name[0]);
-    $('.subtitle').hide();
-    $('.center').addClass('results');
-    $('.scroll_down').show();
+    $('body').append("Richiesta p2");
 
-    $('#block-day-1 .wi').addClass('wi-'+weather1.weather.toLowerCase());
-    $('#block-day-2 .wi').addClass('wi-'+weather2.weather.toLowerCase());
-    $('#block-day-3 .wi').addClass('wi-'+weather3.weather.toLowerCase());
+    $.getJSON("https://restindirectorservice.herokuapp.com/project-director/food?callback=?&token=" + access_token, function(response_p2){
+      //response data are now in the result variable
 
-    $('#block-day-1 .calendar').text(act1.activity);
-    $('#block-day-2 .calendar').text(act2.activity);
-    $('#block-day-3 .calendar').text(act3.activity);
-    $('#second').show();
+      console.log(response_p2);
+
+      $('#form').hide();
+      $('#flickr_bg').css('background-image', 'url("'+ images[0] +'")');
+      $('#quote').text(act1.phrase);
+      $('.motivational_quote').show();
+      $('#title').text(food_name[0]);
+      $('.subtitle').hide();
+      $('.center').addClass('results');
+      $('.scroll_down').show();
+
+      $('#block-day-1 .wi').addClass('wi-'+weather1.weather.toLowerCase());
+      $('#block-day-2 .wi').addClass('wi-'+weather2.weather.toLowerCase());
+      $('#block-day-3 .wi').addClass('wi-'+weather3.weather.toLowerCase());
+
+      $('#block-day-1 .calendar').text(act1.activity);
+      $('#block-day-2 .calendar').text(act2.activity);
+      $('#block-day-3 .calendar').text(act3.activity);
+      $('#second').show();
+    });
   });
 }
 
