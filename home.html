@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <title>RESTinForm</title>
+    <!-- Logo Font -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/weather-icons.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-git2.min.js"></script>
+    <script type="text/javascript" src="http://markdalgleish.com/projects/stellar.js/js/stellar.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+
+      $(document).ready(function(){
+
+        $.stellar({
+          horizontalScrolling: false,
+          verticalOffset: 0
+        });
+
+        $('#form').submit(function(e) {
+          e.preventDefault();
+          send_request();
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '876509135716754',
+          xfbml      : true,
+          version    : 'v2.2'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id='fb-root' data-appid='876509135716754' data-namespace='restinform'></div>
+    <div class="shadow_overlay"></div>
+    <!-- <div id="flickr_bg" data-stellar-background-ratio="0.5"> -->
+        <div id="first">
+          <span class="logo"><span class="oswaldbold">REST</span>inForm</span>
+          <div class="center">
+            <div id="fb-image" class="circle"></div>
+            <span id="quote" class="motivational_quote"></span>
+            <span id="title">How do you feel today?</span>
+            <span class="subtitle">Please, sign in. We will plan your next 3 days!</span>
+            <span class="motivational_quote">Here you are the plan for your next 3 days!</span>
+            <a class="button fb-login" onclick="checkLoginState();">JOIN USING <b>FACEBOOK</b></a>
+            <form id="form" role="form" method="GET" name="contact_form" action="http://restindirectorservice.herokuapp.com/project-director/">
+              <ul>
+                <li>
+                  <input class="input-value" type="number" step="any" placeholder="Height" name="input-height"/>
+                </li>
+                <li>
+                  <input class="input-value" type="number" step="any" placeholder="Weight" name="input-weight"/>
+                </li>
+              </ul>
+              <button class="button submit-button" type="submit" value="Submit">Done</button>
+            </form>
+            <br><br>
+            <div id="status"></div>
+          </div>
+          <!--
+          <div class="scroll_down">
+            <span>SCROLL DOWN</span>
+            <span class="scroll_arrow"></span>
+          </div>
+          -->
+        </div>
+        <div id="second">
+          <div class="weather-table group">
+            <!-- FIRST DAY -->
+            <div id="block-day-1" class="block fl">
+                <div class="weather-icon">
+                     <i class="wi"></i>
+                </div>
+
+                <span class="title">DAY 1</span>
+
+                <!-- CALENDAR -->
+                <div class="calendar">
+                    <li>8.00</li>
+                    <li>9.00</li>
+                    <li>10.00</li>
+                    <li>11.00</li>
+                </div>
+            </div>
+            <!-- SECOND DAY -->
+            <div id="block-day-2" class="block fl">
+                <div class="weather-icon">
+                     <i class="wi"></i>
+                </div>
+
+                <span class="title">DAY 2</span>
+
+                <!-- CALENDAR -->
+                <div class="calendar">
+                    <li>8.00</li>
+                    <li>9.00</li>
+                    <li>10.00</li>
+                    <li>11.00</li>
+                </div>
+            </div>
+            <!-- THIRD DAY -->
+            <div id="block-day-3" class="block fl">
+                <div class="weather-icon">
+                     <i class="wi"></i>
+                </div>
+
+                <span class="title">DAY 3</span>
+
+                <!-- CALENDAR -->
+                <div class="calendar">
+                    <li>8.00</li>
+                    <li>9.00</li>
+                    <li>10.00</li>
+                    <li>11.00</li>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="js/social.js"></script>
+</html>

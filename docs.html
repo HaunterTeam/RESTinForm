@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='http://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/docs.css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/json.js"></script>
+    <script src="js/easyResponsiveTabs.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Easy Responsive Tabs to Accordion</title>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+    if (!library)
+       var library = {};
+
+    library.json = {
+       replacer: function(match, pIndent, pKey, pVal, pEnd) {
+          var key = '<span class=json-key>';
+          var val = '<span class=json-value>';
+          var str = '<span class=json-string>';
+          var r = pIndent || '';
+          if (pKey)
+             r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+          if (pVal)
+             r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+          return r + (pEnd || '');
+          },
+       prettyPrint: function(obj) {
+          var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+          return JSON.stringify(obj, null, 3)
+             .replace(/&/g, '&amp;').replace(/\\"/g, '&quot;')
+             .replace(/</g, '&lt;').replace(/>/g, '&gt;')
+             .replace(jsonLine, library.json.replacer);
+          }
+       };
+
+       $('#dir_res').html(library.json.prettyPrint(dir_res));
+       $('#dir_res_err').html(library.json.prettyPrint(dir_res_err));
+    });
+
+    </script>
+</head>
+<body>
+    <div id="container">
+
+        <!--Vertical Tab-->
+        <div id="parentVerticalTab">
+            <ul class="resp-tabs-list hor_1">
+              <li>Summary</li>
+              <li>RESTinForm Frontend</li>
+              <li>RESTinFormService<br>Process centric service</li>
+              <li>FacebookService</li>
+              <li>PhraseService</li>
+              <li>DBService</li>
+              <li>BmiCalculatorService</li>
+              <li>RestINNutritionix</li>
+              <li>FlickrService</li>
+            </ul>
+            <div class="resp-tabs-container hor_1">
+                <div>
+                    <h1>Summary</h1>
+
+                    <p>Here can be seen the map of our project. While services we developed have a black border, the external services have a blue one. The most important service is the <i>RESTinForm Services</i> which is actualy our Process centric service. Green arrow are requests that use API provided by external services. The red arrows represent the first process while the blue ones are part of the second process. As required each process send request to at least 3 different services.</p>
+
+                    <img src="img/Map.png">
+
+                    The project is based on four external services:
+                    <ul>
+                      <li><b>Facebook</b>: we use this service in order to authenticate requests sent to our services. Each request come to our services (The Phrase Service and the Flickr Service are excluded) must has a parameter named <code>token</code>. Our services ask to the Facebook Graph API if a given token is valid. In the positive case an authenticated user sent the request, otherwise no other actions are authorized.</li> 
+                      <li><b>Flickr</b>: the API provided by Flickr are used in order to gather images that will be used by the Frontend as background images.</li>
+                      <li><b>Nutritionix</b>: is used to gather information about food calories. We suggest to users a particular food based on the result bmi.</li>
+                      <li><b>Open Weather</b>: we use the Open Weather API in order to plan user activities for the next three days. We suggest to users activities based on the weather.</li>
+                    </ul>
+
+                    In order to send requests to the external services we developed 6 Java Services.
+                    <ul>
+                      <li><b>Facebook Service</b>: </li>
+                      <li><b>Facebook Service</b>: </li>
+                    </ul>
+
+
+                    In addition there is a Web Application published on <a href="https://restinform.herokuapp.com" target="_blank">https://restiinform.herokuapp.com</a>(RESTinForm Service, the frontend) which sends four requests and works as follows.
+                    <ul>
+                      <li>The first</li>
+                    </ul>
+
+
+                </div>
+                <div>
+                    <h1>RESTinForm Frontend</h1>
+                    The frontend send an HTTP Request to the process centric service (see Tab RESTinFormService). As all the services we developed, the RESTinFormService calls the FacebookService in order to authenticate the user request's.
+                    While the <code>callback=?</code> parameter means that we are using a jsonp with a random callback generated by jQuery, the <code>token</code> parameter is used to authenticate a user with Facebook.
+
+                    <h2>First Process</h2>
+
+                    The frontend sends an HTTP Request to the process centric service and asks information (see in details tab RESTinFormService) about the actual bmi and the previous bmi inserted by the user.  
+
+                    <pre><code>GET http://127.0.0.1:9091/project-director/weather?callback=?&amp;token=&#60;TOKEN&#62;</code></pre>
+
+                    When the request come back to the frontend side, the result is a JSON Object with the following structure:
+
+                    <pre><code id="dir_res_err"></code></pre>
+
+                    Lorem consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis.
+
+                    <pre><code id="dir_res"></code></pre>
+
+                </div>
+                <div>
+                    <h1>RESTinFormService - Process centric service</h1>
+                    Lorem consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis.
+                </div>
+                <div>
+                    <h1>FacebookService</h1>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis urna gravida mollis.
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<!--Plug-in Initialisation-->
+	<script type="text/javascript">
+    $(document).ready(function() {
+
+        //Vertical Tab
+        $('#parentVerticalTab').easyResponsiveTabs({
+            type: 'vertical', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true, // 100% fit in a container
+            closed: 'accordion', // Start closed if in accordion view
+            tabidentify: 'hor_1', // The tab groups identifier
+        });
+    });
+</script>
+</body>
+</html>

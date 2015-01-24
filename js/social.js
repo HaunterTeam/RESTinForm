@@ -92,7 +92,9 @@ function send_request() {
 
   $('body').append("Richiesta p1");
 
-  $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
+  // restindirectorservice.herokuapp.com
+
+  $.getJSON("http://localhost:9091/project-director/weather?callback=?&token=" + access_token, function(response_p1){
     //response data are now in the result variable
 
     act1 = response_p1.result[0].activityplan;
@@ -105,7 +107,7 @@ function send_request() {
 
     $('body').append("Richiesta p2");
 
-    $.getJSON("https://restindirectorservice.herokuapp.com/project-director/food?callback=?&token=" + access_token, function(response_p2){
+    $.getJSON("http://localhost:9091/project-director/food?callback=?&token=" + access_token, function(response_p2){
       //response data are now in the result variable
 
       console.log(response_p2);
