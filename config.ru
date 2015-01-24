@@ -12,6 +12,8 @@ run lambda { |env|
       'Cache-Control' => 'public, max-age=86400'
     },
     File.open('index.html', File::RDONLY)
+    File.open('home.html', File::RDONLY)
+    File.open('documentation.html', File::RDONLY)
   ]
 }
 
