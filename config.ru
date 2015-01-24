@@ -12,8 +12,22 @@ run lambda { |env|
       'Cache-Control' => 'public, max-age=86400'
     },
     File.open('index.html', File::RDONLY)
-    File.open('home.html', File::RDONLY)
+  ],
+  [
+    200,
+    {
+      'Content-Type'  => 'text/html',
+      'Cache-Control' => 'public, max-age=86400'
+    },
     File.open('documentation.html', File::RDONLY)
+  ],
+  [
+    200,
+    {
+      'Content-Type'  => 'text/html',
+      'Cache-Control' => 'public, max-age=86400'
+    },
+    File.open('home.html', File::RDONLY)
   ]
 }
 
