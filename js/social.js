@@ -50,18 +50,6 @@ function getProfileInfo() {
 
 function send_request() {
 
-  var myObject = new Object();
-  myObject.token = access_token;
-
-  var food_name = new Array("Arrosticini", "Piattone Gigante", "Paninazzo", "Carbonara", "Insalatina");
-  var images = new Array(
-    "http://www.hermestocchetti.com/sites/default/files/styles/fullsize/public/gallery/4-food-meat/p195bn87uf1gds1qrv1sc3o5c1nv34.jpg?itok=c1-Z_tur",
-    "http://www.hermestocchetti.com/sites/default/files/styles/fullsize/public/gallery/4-food-meat/p195bn87ufbhf1fs0ou112464m7.jpg?itok=EKAbMm1x",
-    "http://asiastreetfood.com/wp-content/uploads/2014/06/BanhMi.jpg",
-    "https://c1.staticflickr.com/5/4001/4283223635_da5e247b5e_b.jpg",
-    "https://c4.staticflickr.com/4/3709/9499573644_05a0e270fd_k.jpg"
-    );
-
   // alert(access_token);
 
   // $.ajax({
@@ -89,13 +77,11 @@ function send_request() {
   //   // }
   // });
 
-
-  $('body').append("Richiesta p1");
-
   // restindirectorservice.herokuapp.com
 
-  $.getJSON("http://localhost:9091/project-director/weather?callback=?&token=" + access_token, function(response_p1){
-    //response data are now in the result variable
+  $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
+
+    console.log(response_p2);
 
     act1 = response_p1.result[0].activityplan;
     act2 = response_p1.result[1].activityplan;
@@ -105,18 +91,18 @@ function send_request() {
     weather2 = response_p1.result[1].weather;
     weather3 = response_p1.result[2].weather;
 
-    $('body').append("Richiesta p2");
-
-    $.getJSON("http://localhost:9091/project-director/food?callback=?&token=" + access_token, function(response_p2){
-      //response data are now in the result variable
+    $.getJSON("https://restindirectorservice.herokuapp.com/project-director/food?callback=?&token=" + access_token, function(response_p2){
 
       console.log(response_p2);
 
+      bg = response_p2.result.foodPhoto.url;
+      suggested_food = response_p2.result.suggestedFood.name;
+
       $('#form').hide();
-      $('#flickr_bg').css('background-image', 'url("'+ images[0] +'")');
+      $('#flickr_bg').css('background-image', 'url("'+ bg +'")');
       $('#quote').text(act1.phrase);
       $('.motivational_quote').show();
-      $('#title').text(food_name[0]);
+      $('#title').text(suggested_food);
       $('.subtitle').hide();
       $('.center').addClass('results');
       $('.scroll_down').show();
@@ -129,7 +115,9 @@ function send_request() {
       $('#block-day-2 .calendar').text(act2.activity);
       $('#block-day-3 .calendar').text(act3.activity);
       $('#second').show();
+
     });
+      
   });
 }
 
