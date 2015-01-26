@@ -81,7 +81,7 @@ function send_request() {
 
   $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
 
-    console.log(response_p2);
+    console.log(response_p1);
 
     act1 = response_p1.result[0].activityplan;
     act2 = response_p1.result[1].activityplan;

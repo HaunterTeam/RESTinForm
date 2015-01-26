@@ -36,7 +36,6 @@ button {
 #flickr_bg {
 	width: 100%;
 	min-height: 100%;
-	background: none repeat scroll 0 0 rgba(0%, 0%, 0%, 0.6);
 	background-image: url("http://asiastreetfood.com/wp-content/uploads/2014/06/BanhMi.jpg");
 	background-size: cover;
 	margin: 0px;
