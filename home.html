@@ -20,7 +20,7 @@
           verticalOffset: 0
         });
 
-        $('#form').submit(function(e) {
+        $('#btn_submit').click(function(e) {
           e.preventDefault();
           send_request();
         });
@@ -67,7 +67,7 @@
                   <input class="input-value" type="number" step="any" placeholder="Weight" name="input-weight"/>
                 </li>
               </ul>
-              <input class="button submit-button" type="button" value="Done">
+              <input id="btn_submit" class="button submit-button" type="button" value="Done">
             </form>
             <br><br>
             <div id="status"></div>
