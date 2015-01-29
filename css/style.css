@@ -36,7 +36,7 @@ button {
 #flickr_bg {
 	width: 100%;
 	min-height: 100%;
-	background-image: url("http://asiastreetfood.com/wp-content/uploads/2014/06/BanhMi.jpg");
+	/*background-image: url("http://asiastreetfood.com/wp-content/uploads/2014/06/BanhMi.jpg");*/
 	background-size: cover;
 	margin: 0px;
 	padding: 0px;
@@ -46,15 +46,15 @@ button {
 }
 
 .shadow_overlay {
-	background: #061524;
-	/*background: none repeat scroll 0 0 rgb(0,0,0);*/
+	background: none repeat scroll 0 0 rgba(0,0,0, 0.26);
 	width: 100%;
-	min-height: 100%;
-	position: relative;
+	height: 100%;
+	position: fixed;
+	display: none;
 }
 
 #first {
-	height: 100%;
+	height: 92%;
 }
 
 #second {
@@ -274,17 +274,13 @@ form ul li {
 .block{
     width: 30%;    
     margin: 0 15px;
-    /*overflow: hidden;*/
+    position: relative;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
     background: rgb(255, 255, 255);
     border: 1px solid #fff;
     color: #2c3e50;
-    /*
-    border: 1px solid #3498db;
-    background: #3498db;
-    */
 }
 
 .block .title {
@@ -317,7 +313,7 @@ form ul li {
 
 .copyright {
 	width: 100%;
-	position: absolute;
+	position: relative;
 	font-size: 12px;
 	text-align: center;
 	bottom: 15px;
