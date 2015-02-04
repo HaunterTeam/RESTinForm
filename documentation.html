@@ -50,6 +50,7 @@
 
        $('#fb_invalid_token').html(library.json.prettyPrint(fb_invalid_token));
        $('#fb_valid_token').html(library.json.prettyPrint(fb_valid_token));
+       $('#rest_nutritionix_result').html(library.json.prettyPrint(rest_nutritionix_result));
     });
 
     </script>
@@ -162,6 +163,63 @@
                     <pre><code id="fb_valid_token"></code></pre>
 
                 </div>
+                <div> <!-- Begin phraseService -->
+                    <h1>PhraseService</h1>
+                    
+                  
+
+                </div><!-- end phrase service -->
+                <div> <!-- Begin DBService -->
+                    <h1>DBService</h1>
+                    
+                  
+
+                </div><!-- end DBService -->
+                <div> <!-- Begin BmiCalculatorService: -->
+                    <h1>BmiCalculatorService</h1>
+                    
+                  
+
+                </div><!-- end BmiCalculatorService: -->
+
+            <div> <!-- Begin RestINNutritionix -->
+                <h1>RestINNutritionix</h1>
+                RestINNutritionix is a RESTFul web service which retrieves nutritional information on a given food. The web service calls <code>Nutritionix</code> which is another RESTFul web service providing the access <b>(limited)</b> to an online food database with nutritional values.<br/>
+                Our web service is hosted to <a href="http://95.85.59.245:8443/nutritionix/food">95.85.59.245:8443/nutritionix/food</a>.<br/>
+                <h2>How it works</h2>
+                This is the REST call for our web service:
+                <pre><code>GET http://95.85.59.245:8443/nutritionix/food/?food=<b>{desiredFood}</b></code></pre>
+                Where <b>desiredFood</b> is a string containing the the name of the food from which you want to retrieve nutritional information.<br/>
+                The result of the request is a JSON object like the following exampple for "pizza" as food:
+                <pre><code id="rest_nutritionix_result"></code></pre>
+                The result may vary because the food object is choosen randomly from a list of foods with similar name. As in our example there are many different entries for the word <b>"pizza"</b> (see <a href="https://www.nutritionix.com/search?q=pizza">Pizza results from nutritionix</a>). 
+
+
+                </div><!-- end RestINNutritionix -->
+
+            <div> <!-- Begin FlickrService -->
+                    <h1>FlickrService</h1>
+                    FlickrService is a RESTFul web service that retrieves a picture related to a given keyword from the populare service Flickr. <br/>
+                    The service is hosted to <a href="http://95.85.59.245:9091/flickr/">95.85.59.245:9091/flickr</a>.<br/>
+
+                    <h2>How it works</h2>
+                    The service takes a string as parameter which denotes the argument of which the picture will be related (in our case <b>food</b>).
+                    An example of the call is the following:
+
+                    <pre><code>GET http://95.85.59.245:9091/flickr/<b>{keyword}</b></code></pre>
+                    Where <b>keyword</b> is the parameter to use in the Flickr search engine.<br />
+                    Due to a high sparsity of the results it's probable that it will retrieve a picture outside our
+                    keyword topic. In order to solve this problem we decided to order pictures by their relevance and, as done in <code>RESTInNutritionix</code> we take the first 10 results and choose one of them randomly.
+                    <br/>
+                    The result is a JSON oject like the following for the keyword "bbq ribs"
+                    
+
+
+
+
+
+                </div><!-- end FlickrService -->
+
             </div>
         </div>
     </div>

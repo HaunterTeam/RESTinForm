@@ -92,3 +92,10 @@
        }
     };
 
+    var rest_nutritionix_result = {
+        "item_name":"Pizza",
+        "brand_name":"La Madeleine",
+        "calories":480.0,
+        "fat":21.0
+    }
+
