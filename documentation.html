@@ -51,6 +51,11 @@
        $('#fb_invalid_token').html(library.json.prettyPrint(fb_invalid_token));
        $('#fb_valid_token').html(library.json.prettyPrint(fb_valid_token));
        $('#rest_nutritionix_result').html(library.json.prettyPrint(rest_nutritionix_result));
+       $('#flickr_result').html(library.json.prettyPrint(flickr_result));
+       /*$('#rest_in_db_all').html(library.json.prettyPrint(rest_in_db_all));
+       $('#rest_in_db_person_details').html(library.json.prettyPrint(rest_in_db_person_details));
+       $('#rest_in_db_measure_list').html(library.json.prettyPrint(rest_in_db_measure_list));
+       $('#rest_in_db_measure_details').html(library.json.prettyPrint(rest_in_db_measure_details));*/
     });
 
     </script>
@@ -170,9 +175,52 @@
 
                 </div><!-- end phrase service -->
                 <div> <!-- Begin DBService -->
-                    <h1>DBService</h1>
-                    
-                  
+                    <h1>DBService & RESTinDB</h1>
+                    The Database system is made of two different services working on the same database. One service is RESTFul and the other one is a SOAP service. This is because we needed to access the database from two different points: from the UI and from the Director.
+                    The two services runs on the same process but in different threads. This limitation is due to the SQLite DBMS which makes difficult to reach the database from different locations.
+
+                    <h2>DBService: SOAP database web service</h2>
+
+                    DBService is the name we gave to our SOAP service. It allows less operations in respect to the other one due to an authentication limitation.
+                    The only operation permitted is <code>readPerson</code> which takes as input two parameters:
+                    <ul>
+                      <li><b>id</b>: The a Long value containing the id of the person to retrieve</li>
+                      <li><b>token</b>: A string containing the Facebook token</li>
+                    </ul>
+                    If the token is valid the service will return the details of the desidered person.<br />
+                    <-- add example -->
+
+                    <h2>RESTInDB: RESTFul database web service</h2>
+                    RESTInDB is a RESTFul web service that exposes all the database operations to the outside. All the results are returned as JSON objects.
+                    Here's the list of the main operations permitted on the service:
+
+                    <ul>
+                      <li>Returns a list of all people in the database.<pre><code>GET http://95.85.59.245:8086/dbservice/person/</code></pre>
+                      </li>
+
+                      <li>Returns the details of the person with id equal to <b>{id}</b>.<pre><code>GET http://95.85.59.245:8086/dbservice/person/{id}</code></pre>
+                      
+                      </li>
+                       <li>Updates the Person given in the PUT parameter.<pre><code>PUT http://95.85.59.245:8086/dbservice/person/</code></pre>
+                        
+                      </li>
+                       <li>Removes person identified by <b>{id}</b>.<pre><code>DELETE http://95.85.59.245:8086/dbservice/person/{id}</code></pre>
+                      
+                      </li>
+                      <li>Creates a new person given in the POST parameter. If a <b>{token}</b> value is defined it will override the data in the POST with the one taken from Facebook<pre><code>POST http://95.85.59.245:8086/dbservice/person/?token={token}</code></pre>
+                      </li>
+                      <li>Returns a list of all the measures of type <b>{measure}</b> for the person identified by <b>{id}</b>.<pre><code>GET http://95.85.59.245:8086/dbservice/person/{id}/{measure}</code></pre>
+                      </li>
+                      <li>Returns the details of a measures of type <b>{measure}</b> identified by <b>{mid}</b> for the person identified by <b>{id}</b>.<pre><code>GET http://95.85.59.245:8086/dbservice/person/{id}/{measure}/{mid}</code></pre>
+                      </li>
+                       <li>Creates a new measure for the person identified by <b>{id}</b>.<pre><code>PUT http://95.85.59.245:8086/dbservice/person/{id}/{measure}/{mid}</code></pre>
+                      </li>
+                      <li>Updates the measure given in the POST parameter for the person identified by <b>{id}</b><pre><code>POST http://95.85.59.245:8086/dbservice/person/{id}/{measure}</code></pre>
+                       <li>Returns a list of all the types of measures .<pre><code>GET http://95.85.59.245:8086/dbservice/measures</code></pre>
+                      </li>
+
+                    </ul>
+
 
                 </div><!-- end DBService -->
                 <div> <!-- Begin BmiCalculatorService: -->
@@ -212,7 +260,9 @@
                     keyword topic. In order to solve this problem we decided to order pictures by their relevance and, as done in <code>RESTInNutritionix</code> we take the first 10 results and choose one of them randomly.
                     <br/>
                     The result is a JSON oject like the following for the keyword "bbq ribs"
-                    
+                    <pre><code id="flickr_result"></code></pre>
+                    It may happen that some fields are null, this is because not all fields are mandatory on Flickr and they can be left empty.
+
 
 
 
