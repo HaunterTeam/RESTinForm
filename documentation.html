@@ -52,6 +52,8 @@
        $('#fb_valid_token').html(library.json.prettyPrint(fb_valid_token));
        $('#rest_nutritionix_result').html(library.json.prettyPrint(rest_nutritionix_result));
        $('#flickr_result').html(library.json.prettyPrint(flickr_result));
+
+       $('#phrase_result').html(library.json.prettyPrint(phrase_result));
        /*$('#rest_in_db_all').html(library.json.prettyPrint(rest_in_db_all));
        $('#rest_in_db_person_details').html(library.json.prettyPrint(rest_in_db_person_details));
        $('#rest_in_db_measure_list').html(library.json.prettyPrint(rest_in_db_measure_list));
@@ -171,7 +173,28 @@
                 <div> <!-- Begin phraseService -->
                     <h1>PhraseService</h1>
                     
-                  
+                  	PhraseService is a service that given a BMI and the weather it gives back a motivation phrase and plans for you some activity for the next three days on the base of the weather ann BMI level. This service is hosted in <a href="https://restinphraseservice.herokuapp.com">https://restinphraseservice.herokuapp.com</a>. The request must be in the following format:
+                  	<pre>
+	                  	<code>
+	                  		GET http://restinphraseservice.herokuapp.com/phrase-service/phrase?bmilvl=&#60;BMILEVEL&#62;<br>&change=&#60;CHANGE&#62;&wt1=&#60;WEATHER1&#62;&wt2=&#60;WEATHER2&#62;&wt3=&#60;WEATHER3&#62;
+	                  	</code>
+                  	</pre>
+                  	<ul>
+                  		<li>BMILEVEL: is the bmi level for of the person. The level are for: 1 thin, 2 normal, 3 fat, 4 obese</li>
+                  		<li>CHANGE: 1 if is fatted, 2 if slimmed</li>
+                  		<li>WEATHER 1,2,3: is the weather for the next 3 days. 1 if you can go outside, 2 if you must stay at home to do exercise</li>
+                  	</ul>
+
+                  	The JSON returned is an array list of activity plan for the next 3 days:
+
+                  	<pre>
+	                  	<code id="phrase_result">
+	                  		
+	                  	</code>
+                  	</pre>
+
+                  	Where every day has an activity plan and a motivational phrase.
+
 
                 </div><!-- end phrase service -->
                 <div> <!-- Begin DBService -->

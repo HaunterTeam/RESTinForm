@@ -106,6 +106,34 @@
       "title":"Pizza Story :D"
     }
 
+    var phrase_result = 
+      [
+                  {
+                      "idphrase": 1,
+                      "phrase": "You fatted a bit. Go ahead ang eat a lot of",
+                      "weathertype": 1,
+                      "bmirange": 1,
+                      "change": 1,
+                      "activity": "Eat and lie down."
+                  },
+                  {
+                      "idphrase": 3,
+                      "phrase": "Great work go ahead and eat ",
+                      "weathertype": 2,
+                      "bmirange": 1,
+                      "change": 1,
+                      "activity": "Stay at home, watch TV and eat nutella."
+                  },
+                  {
+                      "idphrase": 1,
+                      "phrase": "You fatted a bit. Go ahead ang eat a lot of",
+                      "weathertype": 1,
+                      "bmirange": 1,
+                      "change": 1,
+                      "activity": "Eat and lie down."
+                  }
+              ]
+
     /*var rest_in_db_all = {[
     {"id":1,"firstname":"Mirko","lastname":"Morandi","birthdate":695538000000,"measureHistory":[{"mid":1,"measureValue":"80","dateRegistered":1335326400000,"measureType":"weight"},
     {"mid":2,"measureValue":"93","dateRegistered":1416805200000,"measureType":"weight"},{"mid":3,"measureValue":"185","dateRegistered":1387688400000,"measureType":"height"},
