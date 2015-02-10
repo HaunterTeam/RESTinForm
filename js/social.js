@@ -73,13 +73,11 @@ function send_request(obj) {
 
   var invocation = new XMLHttpRequest();
      
-  function callOtherDomain() {
-    if(invocation) {    
-      invocation.open('POST', url_h, true);
-      invocation.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-      invocation.onreadystatechange = handler;
-      invocation.send(JSON.stringify(weight_obj));
-    }
+  if(invocation) {    
+    invocation.open('POST', url_h, true);
+    invocation.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    invocation.onreadystatechange = handler;
+    invocation.send(JSON.stringify(weight_obj));
   }
 
   // $.ajax({
