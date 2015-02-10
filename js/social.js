@@ -81,7 +81,6 @@ function send_request(obj) {
     }
     invocation.open('POST', url_h, true);
     invocation.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    invocation.onreadystatechange = handler;
     invocation.send(JSON.stringify(weight_obj));
   }
 
