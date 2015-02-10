@@ -52,8 +52,8 @@ function getProfileInfo() {
 
 function send_request(obj) {
 
-  var weight_obj = {"measureValue": parseFloat(obj.weight), "measureType":"weight"};
-  var height_obj = {"measureValue": parseFloat(obj.height), "measureType":"weight"};
+  var weight_obj = {"measureValue": obj.weight, "measureType":"weight"};
+  var height_obj = {"measureValue": obj.height, "measureType":"weight"};
   var url_w = "https://95.85.59.245:8086/dbservice/person/" + id + "/weight";
   var url_h = "https://95.85.59.245:8086/dbservice/person/" + id + "/height";
 
@@ -71,19 +71,19 @@ function send_request(obj) {
       }
   });
 
-  $.ajax({
-      type: "POST",
-      url: url_h,
-      data: JSON.stringify(height_obj),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function(data) {
-        console.log(data);
-      },
-      failure: function(errMsg) {
-        console.log(errMsg);
-      }
-  });
+  // $.ajax({
+  //     type: "POST",
+  //     url: url_h,
+  //     data: JSON.stringify(height_obj),
+  //     contentType: "application/json; charset=utf-8",
+  //     dataType: "json",
+  //     success: function(data) {
+  //       console.log(data);
+  //     },
+  //     failure: function(errMsg) {
+  //       console.log(errMsg);
+  //     }
+  // });
 
   // $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
 
