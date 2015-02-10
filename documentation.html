@@ -54,6 +54,9 @@
        $('#flickr_result').html(library.json.prettyPrint(flickr_result));
 
        $('#phrase_result').html(library.json.prettyPrint(phrase_result));
+
+       $('#bmiutil_result').html(library.json.prettyPrint(bmiutil_result));
+
        /*$('#rest_in_db_all').html(library.json.prettyPrint(rest_in_db_all));
        $('#rest_in_db_person_details').html(library.json.prettyPrint(rest_in_db_person_details));
        $('#rest_in_db_measure_list').html(library.json.prettyPrint(rest_in_db_measure_list));
@@ -174,11 +177,7 @@
                     <h1>PhraseService</h1>
                     
                   	PhraseService is a service that given a BMI and the weather it gives back a motivation phrase and plans for you some activity for the next three days on the base of the weather ann BMI level. This service is hosted in <a href="https://restinphraseservice.herokuapp.com">https://restinphraseservice.herokuapp.com</a>. The request must be in the following format:
-                  	<pre>
-	                  	<code>
-	                  		GET http://restinphraseservice.herokuapp.com/phrase-service/phrase?bmilvl=&#60;BMILEVEL&#62;<br>&change=&#60;CHANGE&#62;&wt1=&#60;WEATHER1&#62;&wt2=&#60;WEATHER2&#62;&wt3=&#60;WEATHER3&#62;
-	                  	</code>
-                  	</pre>
+                  	<pre><code>GET http://restinphraseservice.herokuapp.com/phrase-service/phrase?bmilvl=&#60;BMILEVEL&#62;<br>&change=&#60;CHANGE&#62;&wt1=&#60;WEATHER1&#62;&wt2=&#60;WEATHER2&#62;&wt3=&#60;WEATHER3&#62;</code></pre>
                   	<ul>
                   		<li>BMILEVEL: is the bmi level for of the person. The level are for: 1 thin, 2 normal, 3 fat, 4 obese</li>
                   		<li>CHANGE: 1 if is fatted, 2 if slimmed</li>
@@ -250,7 +249,20 @@
                 <div> <!-- Begin BmiCalculatorService: -->
                     <h1>BmiCalculatorService</h1>
                     
-                  
+                  	BmiCalculatorService is a simple service that given the current bmi a the old one it returns back the actual bmi level and if you fatted or slimmed. This service is hosted in <a href="https://restinphraseservice.herokuapp.com">https://bmicalculatorservice.herokuapp.com</a>. The request must be in the following format:
+                  	<pre><code>GET http://bmicalculatorservice.herokuapp.com/bmicalc-service/bmiutil?bmi=&#60;BMI&#62;&bmiold=&#60;BMIOLD&#62;</code></pre>
+                    <ul>
+                      <li>BMI: is the actual bmi</li>
+                      <li>BMIOLD: old bmi of the person</li>
+                    </ul>
+
+                    The JSon returned is a a simple json like the following:
+                    <pre><code id="bmiutil_result"></code></pre>
+                    Where:
+                    <ul>
+                      <li>change: is 1 if fatted and 2 if slimmed</li>
+                      <li>bmilvl: is the bmi level for of the person. The level are for: 1 thin, 2 normal, 3 fat, 4 obese</li>
+                    </ul>
 
                 </div><!-- end BmiCalculatorService: -->
 
