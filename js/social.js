@@ -54,8 +54,8 @@ function send_request(obj) {
 
   var weight_obj = {"measureValue": parseFloat(obj.weight), "measureType":"weight"};
   var height_obj = {"measureValue": parseFloat(obj.height), "measureType":"weight"};
-  var url_w = "http://95.85.59.245:8086/dbservice/person/" + id + "/weight";
-  var url_h = "http://95.85.59.245:8086/dbservice/person/" + id + "/height";
+  var url_w = "https://95.85.59.245:8086/dbservice/person/" + id + "/weight";
+  var url_h = "https://95.85.59.245:8086/dbservice/person/" + id + "/height";
 
   $.ajax({
       type: "POST",
