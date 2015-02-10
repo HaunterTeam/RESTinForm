@@ -52,7 +52,7 @@ function getProfileInfo() {
 
 function send_request(obj) {
 
-  var weight_obj = {"measureValue": "70", "measureType":"weight", "id" : id, "token": access_token};
+  var weight_obj = {"measureValue": "70", "measureType":"weight"};
   var height_obj = {"measureValue": "180", "measureType":"height"};
   var url_w = "http://95.85.59.245:8086/dbservice/person/facebook";
   var url_h = "http://95.85.59.245:8086/dbservice/person/facebook";
