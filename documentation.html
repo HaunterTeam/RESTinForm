@@ -271,13 +271,13 @@
             <div> <!-- Begin FlickrService -->
                     <h1>FlickrService</h1>
                     FlickrService is a RESTFul web service that retrieves a picture related to a given keyword from the populare service Flickr. <br/>
-                    The service is hosted to <a href="http://95.85.59.245:9091/project-flickr/flickr/">95.85.59.245:9091/flickr</a>.<br/>
+                    The service is hosted on <a href="https://restinflickrservice.herokuapp.com/flickr-project/flickr/">https://restinflickrservice.herokuapp.com/flickr-project/flickr</a>.<br/>
 
                     <h2>How it works</h2>
                     The service takes a string as parameter which denotes the argument of which the picture will be related (in our case <b>food</b>).
                     An example of the call is the following:
 
-                    <pre><code>GET http://95.85.59.245:9091/project-flickr/flickr/<b>{keyword}</b></code></pre>
+                    <pre><code>GET https://restinflickrservice.herokuapp.com/flickr-project/flickr/<b>{keyword}</b></code></pre>
                     Where <b>keyword</b> is the parameter to use in the Flickr search engine.<br />
                     Due to a high sparsity of the results it's probable that it will retrieve a picture outside our
                     keyword topic. In order to solve this problem we decided to order pictures by their relevance and, as done in <code>RESTInNutritionix</code> we take the first 10 results and choose one of them randomly.
