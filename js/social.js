@@ -1,6 +1,7 @@
 var access_token = "";
 var img_url = "";
 var first_name = "";
+var id = "";
 
 function saveToken(accessToken) {
   access_token = accessToken;
@@ -39,6 +40,7 @@ function checkLoginState() {
 function getProfileInfo() {
   FB.api('/me?field=id,first_name,location', function(response) {
     first_name = response.first_name;
+    id = response.id;
     $('#title').text("Hi " + first_name + ". Insert your health profile!");
   });
 
@@ -48,7 +50,27 @@ function getProfileInfo() {
   });
 }
 
-function send_request() {
+function send_request(obj) {
+
+  console.log(obj);
+
+  var weight_obj = {"measureValue":"", "measureType":"weight"};
+  var height_obj = {"measureValue":"", "measureType":"weight"};
+  var url = "http://95.85.59.245:8086/dbservice/person/{id}/{measure}"
+
+  // $.ajax({
+  //     type: "POST",
+  //     url: "/webservices/PodcastService.asmx/CreateMarkers",
+  //     // The key needs to match your method's input parameter (case-sensitive).
+  //     data: JSON.stringify({ Markers: markers }),
+  //     contentType: "application/json; charset=utf-8",
+  //     dataType: "json",
+  //     success: function(data){alert(data);},
+  //     failure: function(errMsg) {
+  //         alert(errMsg);
+  //     }
+  // });
+
 
   $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
 
@@ -89,7 +111,6 @@ function send_request() {
       $('#second').show();
 
     });
-      
   });
 }
 

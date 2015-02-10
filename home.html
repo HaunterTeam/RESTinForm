@@ -22,7 +22,7 @@
 
         $('#btn_submit').click(function(e) {
           e.preventDefault();
-          send_request();
+          send_request($('#form').serialize());
         });
 
       });
@@ -61,10 +61,10 @@
             <form id="form" role="form" method="GET" name="contact_form">
               <ul>
                 <li>
-                  <input class="input-value" type="number" step="any" placeholder="Height" name="input-height"/>
+                  <input id="weight_value" class="input-value" type="number" step="any" placeholder="Height" name="input-height"/>
                 </li>
                 <li>
-                  <input class="input-value" type="number" step="any" placeholder="Weight" name="input-weight"/>
+                  <input id="height_value" class="input-value" type="number" step="any" placeholder="Weight" name="input-weight"/>
                 </li>
               </ul>
               <input id="btn_submit" class="button submit-button" type="button" value="Done">
