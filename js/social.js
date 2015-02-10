@@ -57,19 +57,30 @@ function send_request(obj) {
   var url_w = "http://95.85.59.245:8086/dbservice/person/" + id + "/weight";
   var url_h = "http://95.85.59.245:8086/dbservice/person/" + id + "/height";
 
-  $.ajax({
-      type: "POST",
-      url: url_w,
-      data: JSON.stringify(weight_obj),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      success: function(data) {
-        console.log(data);
-      },
-      failure: function(errMsg) {
-        console.log(errMsg);
-      }
-  });
+  // $.ajax({
+  //     type: "POST",
+  //     url: url_w,
+  //     data: JSON.stringify(weight_obj),
+  //     contentType: "application/json; charset=utf-8",
+  //     dataType: "json",
+  //     success: function(data) {
+  //       console.log(data);
+  //     },
+  //     failure: function(errMsg) {
+  //       console.log(errMsg);
+  //     }
+  // });
+
+  var invocation = new XMLHttpRequest();
+     
+  function callOtherDomain() {
+    if(invocation) {    
+      invocation.open('POST', url_h, true);
+      invocation.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      invocation.onreadystatechange = handler;
+      invocation.send(JSON.stringify(weight_obj));
+    }
+  }
 
   // $.ajax({
   //     type: "POST",
