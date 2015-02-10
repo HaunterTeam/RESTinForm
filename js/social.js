@@ -57,6 +57,8 @@ function send_request(obj) {
   var url_w = "http://95.85.59.245:8086/dbservice/person/" + id + "/weight";
   var url_h = "http://95.85.59.245:8086/dbservice/person/" + id + "/height";
 
+  console.log(JSON.stringify(weight_obj));
+
   $.ajax({
       type: 'POST',
       url: url_w + "?callback=?&token=" + access_token,
