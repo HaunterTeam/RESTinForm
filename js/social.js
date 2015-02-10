@@ -52,8 +52,8 @@ function getProfileInfo() {
 
 function send_request(obj) {
 
-  var weight_obj = {"measureValue": "70", "measureType":"weight"};
-  var height_obj = {"measureValue": "180", "measureType":"height"};
+  var weight_obj = {"measureValue": "70", "measureType": "weight"};
+  var height_obj = {"measureValue": "180", "measureType": "height"};
   var url_w = "http://95.85.59.245:8088/dbservice/person/facebook";
   var url_h = "http://95.85.59.245:8088/dbservice/person/facebook";
 
@@ -61,12 +61,17 @@ function send_request(obj) {
 
   $.ajax({
       type: 'POST',
-      url: url_w + "?callback=?&token=" + access_token,
+      url: url_w + "?token=" + access_token,
       crossDomain: true,
       data: JSON.stringify(weight_obj),
-      success: function(data) { alert('data: ' + data); },
       contentType: "application/json",
-      dataType: 'json'
+      dataType: 'json',
+      success: function(data) {
+        console.log('data: ' + data);
+      },
+      failure: function(errMsg) {
+        console.log(errMsg);
+      }
   });
 
   // $.ajax({
