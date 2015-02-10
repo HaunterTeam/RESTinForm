@@ -142,6 +142,19 @@
                     <pre><code>GET https://restindirectorservice.herokuapp.com/project-director/food?callback=&#60;CALLBACK&#62;&amp;token=&#60;TOKEN&#62;</code></pre>
 
                     <pre><code>jQuery30090583399275290333725555919781042774309986270964_1421931432535(&#60;JSON RESPONSE&#62;)</code></pre>
+
+                    <h2>How it works</h2>
+                    This service is the <b>Director</b> of the web service composition. It handles two different processes returning a unique result given by the combination of the results from the two previous.<br />
+
+                    <h3>The First process: Suggestions based on health and weather</h3>
+                    The first process focuses on giving motivational suggestions on what to do during the day in order to keep a healthy life style. Furthermore to give the most accurate suggestion our service combines the results with the weather forecast giving the best suggestion for any occasion.<br/>
+                    The service will first retrieeve the user's BMI and the weather forecasts. Once retrieved them it will call the <b>PhraseService</b> to get the suggestions for the next three days.
+
+                    <h3>The second process: Food suggestions (with pictures) based on your health</h3>
+                    The second process aims to suggest the user a certain food related to his health status. <br />
+                    First the service will get the user's BMI value, and from that it will choose from an adequate list of foods. These are divided in three categories: dietetic, normal and fat.
+                    Once the food is choosen the service will retrieve nutritional informations from <b>RESTInNutritionix</b> and subsequently a picture from <b>FlickrService</b>.
+
                 </div>
                 <div>
                     <h1>FacebookService</h1>
