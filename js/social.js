@@ -59,11 +59,11 @@ function send_request(obj) {
 
   $.ajax({
       type: 'POST',
-      url: url_w,
+      url: url_w + "?callback=?&token=" + access_token,
       data: JSON.stringify(weight_obj),
       success: function(data) { alert('data: ' + data); },
       contentType: "application/json",
-      dataType: 'jsonp'
+      dataType: 'json'
   });
 
   // $.ajax({
