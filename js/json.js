@@ -134,6 +134,10 @@
                   }
               ]
 
+    var bmiutil_result = {
+        "change": 2,
+        "bmilvl": 2
+    }
     /*var rest_in_db_all = {[
     {"id":1,"firstname":"Mirko","lastname":"Morandi","birthdate":695538000000,"measureHistory":[{"mid":1,"measureValue":"80","dateRegistered":1335326400000,"measureType":"weight"},
     {"mid":2,"measureValue":"93","dateRegistered":1416805200000,"measureType":"weight"},{"mid":3,"measureValue":"185","dateRegistered":1387688400000,"measureType":"height"},
