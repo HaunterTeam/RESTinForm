@@ -52,66 +52,79 @@ function getProfileInfo() {
 
 function send_request(obj) {
 
-  console.log(obj);
+  var weight_obj = {"measureValue": parseFloat(obj.weight), "measureType":"weight"};
+  var height_obj = {"measureValue": parseFloat(obj.height), "measureType":"weight"};
+  var url_w = "http://95.85.59.245:8086/dbservice/person/" + id + "/weight";
+  var url_h = "http://95.85.59.245:8086/dbservice/person/" + id + "/height";
 
-  var weight_obj = {"measureValue":"", "measureType":"weight"};
-  var height_obj = {"measureValue":"", "measureType":"weight"};
-  var url = "http://95.85.59.245:8086/dbservice/person/{id}/{measure}"
-
-  // $.ajax({
-  //     type: "POST",
-  //     url: "/webservices/PodcastService.asmx/CreateMarkers",
-  //     // The key needs to match your method's input parameter (case-sensitive).
-  //     data: JSON.stringify({ Markers: markers }),
-  //     contentType: "application/json; charset=utf-8",
-  //     dataType: "json",
-  //     success: function(data){alert(data);},
-  //     failure: function(errMsg) {
-  //         alert(errMsg);
-  //     }
-  // });
-
-
-  $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
-
-    console.log(response_p1);
-
-    act1 = response_p1.result[0].activityplan;
-    act2 = response_p1.result[1].activityplan;
-    act3 = response_p1.result[2].activityplan;
-
-    weather1 = response_p1.result[0].weather;
-    weather2 = response_p1.result[1].weather;
-    weather3 = response_p1.result[2].weather;
-
-    $.getJSON("https://restindirectorservice.herokuapp.com/project-director/food?callback=?&token=" + access_token, function(response_p2){
-
-      console.log(response_p2);
-
-      bg = response_p2.result.foodPhoto.url;
-      suggested_food = response_p2.result.suggestedFood.name;
-
-      $('#form').hide();
-      $('.shadow_overlay').show();
-      $('#flickr_bg').css('background-image', 'url("'+ bg +'")');
-      $('#quote').text(act1.phrase);
-      $('.motivational_quote').show();
-      $('#title').text(suggested_food);
-      $('.subtitle').hide();
-      $('.center').addClass('results');
-      $('.scroll_down').show();
-
-      $('#block-day-1 .wi').addClass('wi-'+weather1.weather.toLowerCase());
-      $('#block-day-2 .wi').addClass('wi-'+weather2.weather.toLowerCase());
-      $('#block-day-3 .wi').addClass('wi-'+weather3.weather.toLowerCase());
-
-      $('#block-day-1 .calendar').text(act1.activity);
-      $('#block-day-2 .calendar').text(act2.activity);
-      $('#block-day-3 .calendar').text(act3.activity);
-      $('#second').show();
-
-    });
+  $.ajax({
+      type: "POST",
+      url: url_w,
+      data: JSON.stringify(weight_obj),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+      },
+      failure: function(errMsg) {
+        console.log(errMsg);
+      }
   });
+
+  $.ajax({
+      type: "POST",
+      url: url_h,
+      data: JSON.stringify(height_obj),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+      },
+      failure: function(errMsg) {
+        console.log(errMsg);
+      }
+  });
+
+  // $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
+
+  //   console.log(response_p1);
+
+  //   act1 = response_p1.result[0].activityplan;
+  //   act2 = response_p1.result[1].activityplan;
+  //   act3 = response_p1.result[2].activityplan;
+
+  //   weather1 = response_p1.result[0].weather;
+  //   weather2 = response_p1.result[1].weather;
+  //   weather3 = response_p1.result[2].weather;
+
+  //   $.getJSON("https://restindirectorservice.herokuapp.com/project-director/food?callback=?&token=" + access_token, function(response_p2){
+
+  //     console.log(response_p2);
+
+  //     bg = response_p2.result.foodPhoto.url;
+  //     suggested_food = response_p2.result.suggestedFood.name;
+
+  //     $('#form').hide();
+  //     $('.shadow_overlay').show();
+  //     $('#flickr_bg').css('background-image', 'url("'+ bg +'")');
+  //     $('#quote').text(act1.phrase);
+  //     $('.motivational_quote').show();
+  //     $('#title').text(suggested_food);
+  //     $('.subtitle').hide();
+  //     $('.center').addClass('results');
+  //     $('.scroll_down').show();
+
+  //     $('#block-day-1 .wi').addClass('wi-'+weather1.weather.toLowerCase());
+  //     $('#block-day-2 .wi').addClass('wi-'+weather2.weather.toLowerCase());
+  //     $('#block-day-3 .wi').addClass('wi-'+weather3.weather.toLowerCase());
+
+  //     $('#block-day-1 .calendar').text(act1.activity);
+  //     $('#block-day-2 .calendar').text(act2.activity);
+  //     $('#block-day-3 .calendar').text(act3.activity);
+  //     $('#second').show();
+
+  //   });
+  // });
 }
 
 function updateView() {
