@@ -73,7 +73,12 @@ function send_request(obj) {
 
   var invocation = new XMLHttpRequest();
      
-  if(invocation) {    
+  if(invocation) {
+    invocation.onreadystatechange = function() {
+        if (invocation.readyState == 4) {
+            console.log(invocation.responseText);
+        }
+    }
     invocation.open('POST', url_h, true);
     invocation.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     invocation.onreadystatechange = handler;
