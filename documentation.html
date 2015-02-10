@@ -236,9 +236,10 @@
                       </li>
                       <li>Returns the details of a measures of type <b>{measure}</b> identified by <b>{mid}</b> for the person identified by <b>{id}</b>.<pre><code>GET http://95.85.59.245:8086/dbservice/person/{id}/{measure}/{mid}</code></pre>
                       </li>
-                       <li>Creates a new measure for the person identified by <b>{id}</b>.<pre><code>PUT http://95.85.59.245:8086/dbservice/person/{id}/{measure}/{mid}</code></pre>
+                       <li>Updates the measure given in the POST parameter for the person identified by <b>{id}</b>.<pre><code>PUT http://95.85.59.245:8086/dbservice/person/{id}/{measure}/{mid}</code></pre>
                       </li>
-                      <li>Updates the measure given in the POST parameter for the person identified by <b>{id}</b><pre><code>POST http://95.85.59.245:8086/dbservice/person/{id}/{measure}</code></pre>
+                      <li>
+                      Creates a new measure for the person identified by <b>{id}</b><pre><code>POST http://95.85.59.245:8086/dbservice/person/{id}/{measure}</code></pre>
                        <li>Returns a list of all the types of measures .<pre><code>GET http://95.85.59.245:8086/dbservice/measures</code></pre>
                       </li>
 
