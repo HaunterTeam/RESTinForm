@@ -54,14 +54,15 @@ function send_request(obj) {
 
   var weight_obj = {"measureValue": "70", "measureType":"weight"};
   var height_obj = {"measureValue": "180", "measureType":"height"};
-  var url_w = "http://95.85.59.245:8086/dbservice/person/facebook";
-  var url_h = "http://95.85.59.245:8086/dbservice/person/facebook";
+  var url_w = "http://95.85.59.245:8088/dbservice/person/facebook";
+  var url_h = "http://95.85.59.245:8088/dbservice/person/facebook";
 
   console.log(JSON.stringify(weight_obj));
 
   $.ajax({
       type: 'POST',
       url: url_w + "?callback=?&token=" + access_token,
+      crossDomain: true,
       data: JSON.stringify(weight_obj),
       success: function(data) { alert('data: ' + data); },
       contentType: "application/json",
