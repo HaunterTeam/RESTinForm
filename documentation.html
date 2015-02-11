@@ -117,17 +117,25 @@
 
                     <h2>First Process</h2>
 
-                    The frontend sends an HTTP Request to the process centric service and asks information (see in details tab RESTinFormService) about the actual bmi and the previous bmi inserted by the user.  
+                    The frontend sends an HTTP Request to the process centric service and asks information (see in details tab RESTinFormService) about the weather, the actual bmi and the previous bmi of a particular user.
 
                     <pre><code>GET http://188.226.183.46:9091/project-director/weather?callback=?&amp;token=&#60;TOKEN&#62;</code></pre>
 
-                    When the request come back to the frontend side, the result is a JSON Object with the following structure:
+                    When the request come back to the frontend side, the result is a JSON Object with the following structure, in case of error.
 
                     <pre><code id="dir_res_err"></code></pre>
 
-                    Lorem consectetur adipiscing elit. Vestibulum nibh urna, euismod ut ornare non, volutpat vel tortor. Integer laoreet placerat suscipit. Sed sodales scelerisque commodo. Nam porta cursus lectus. Proin nunc erat, gravida a facilisis quis, ornare id lectus. Proin consectetur nibh quis.
+                    On the other hand, in case the token is valid and all the other services are called correctly, the response is the following.
 
                     <pre><code id="dir_res"></code></pre>
+
+                    <h2>Second Process</h2>
+
+                    The frontend sends an HTTP Request to the process centric service and asks information (see in details tab RESTinFormService) about the actual bmi, the previous bmi of a particular user and which food or dish does the user shoul eat in order to maintain a diet.
+
+                    <pre><code>GET http://188.226.183.46:9091/project-director/food?callback=?&amp;token=&#60;TOKEN&#62;</code></pre>
+
+                    The response is the follwing: 
 
                 </div>
                 <div>
