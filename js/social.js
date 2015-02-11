@@ -59,6 +59,7 @@ function send_request(obj) {
   console.log(JSON.stringify(data_obj));
 
   $('#first').hide();
+  $('.copyright').hide();
   $('#circularG').show();
 
   $.ajax({
@@ -100,6 +101,7 @@ function call_director() {
 
       $('#circularG').hide();
       $('#first').show();
+      $('.copyright').show();
 
       $('#form').hide();
       $('.shadow_overlay').show();
