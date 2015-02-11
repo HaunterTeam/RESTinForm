@@ -52,96 +52,76 @@ function getProfileInfo() {
 
 function send_request(obj) {
 
-  var weight_obj = {"measureValue": "70", "measureType": "weight"};
-  var height_obj = {"measureValue": "180", "measureType": "height"};
-  var url_w = "http://95.85.59.245:8088/dbservice/person/facebook";
-  var url_h = "http://95.85.59.245:8088/dbservice/person/facebook";
+  
+  var url = "http://188.226.183.46/cross.php";
+  var data_obj = {"token": access_token, "height": obj.height, "weight": obj.weight };
 
-  console.log(JSON.stringify(weight_obj));
+  console.log(JSON.stringify(data_obj));
+
+  $('#first').hide();
+  $('#circularG').show();
 
   $.ajax({
       type: 'POST',
-      url: url_w + "?token=" + access_token,
-      crossDomain: true,
-      data: JSON.stringify(weight_obj),
+      url: url,
+      data: data_obj,
       contentType: "application/json",
       dataType: 'json',
       success: function(data) {
-        console.log('data: ' + data);
+        console.log('Response: ' + data);
+        call_director();
       },
       failure: function(errMsg) {
         console.log(errMsg);
       }
   });
+}
 
-  // $.ajax({
-  //     type: "POST",
-  //     url: url_w,
-  //     data: JSON.stringify(weight_obj),
-  //     contentType: "application/json; charset=utf-8",
-  //     dataType: "json",
-  //     success: function(data) {
-  //       console.log(data);
-  //     },
-  //     failure: function(errMsg) {
-  //       console.log(errMsg);
-  //     }
-  // });
+function call_director() {
 
-  // $.ajax({
-  //     type: "POST",
-  //     url: url_h,
-  //     data: JSON.stringify(height_obj),
-  //     contentType: "application/json; charset=utf-8",
-  //     dataType: "json",
-  //     success: function(data) {
-  //       console.log(data);
-  //     },
-  //     failure: function(errMsg) {
-  //       console.log(errMsg);
-  //     }
-  // });
+  $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
 
-  // $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
+    console.log(response_p1);
 
-  //   console.log(response_p1);
+    act1 = response_p1.result[0].activityplan;
+    act2 = response_p1.result[1].activityplan;
+    act3 = response_p1.result[2].activityplan;
 
-  //   act1 = response_p1.result[0].activityplan;
-  //   act2 = response_p1.result[1].activityplan;
-  //   act3 = response_p1.result[2].activityplan;
+    weather1 = response_p1.result[0].weather;
+    weather2 = response_p1.result[1].weather;
+    weather3 = response_p1.result[2].weather;
 
-  //   weather1 = response_p1.result[0].weather;
-  //   weather2 = response_p1.result[1].weather;
-  //   weather3 = response_p1.result[2].weather;
+    $.getJSON("https://restindirectorservice.herokuapp.com/project-director/food?callback=?&token=" + access_token, function(response_p2){
 
-  //   $.getJSON("https://restindirectorservice.herokuapp.com/project-director/food?callback=?&token=" + access_token, function(response_p2){
+      console.log(response_p2);
 
-  //     console.log(response_p2);
+      bg = response_p2.result.foodPhoto.url;
+      suggested_food = response_p2.result.suggestedFood.name;
 
-  //     bg = response_p2.result.foodPhoto.url;
-  //     suggested_food = response_p2.result.suggestedFood.name;
+      $('#circularG').hide();
+      $('#first').show();
 
-  //     $('#form').hide();
-  //     $('.shadow_overlay').show();
-  //     $('#flickr_bg').css('background-image', 'url("'+ bg +'")');
-  //     $('#quote').text(act1.phrase);
-  //     $('.motivational_quote').show();
-  //     $('#title').text(suggested_food);
-  //     $('.subtitle').hide();
-  //     $('.center').addClass('results');
-  //     $('.scroll_down').show();
+      $('#form').hide();
+      $('.shadow_overlay').show();
+      $('#flickr_bg').css('background-image', 'url("'+ bg +'")');
+      $('#quote').text(act1.phrase);
+      $('.motivational_quote').show();
+      $('#title').text(suggested_food);
+      $('.subtitle').hide();
+      $('.center').addClass('results');
+      $('.scroll_down').show();
 
-  //     $('#block-day-1 .wi').addClass('wi-'+weather1.weather.toLowerCase());
-  //     $('#block-day-2 .wi').addClass('wi-'+weather2.weather.toLowerCase());
-  //     $('#block-day-3 .wi').addClass('wi-'+weather3.weather.toLowerCase());
+      $('#block-day-1 .wi').addClass('wi-'+weather1.weather.toLowerCase());
+      $('#block-day-2 .wi').addClass('wi-'+weather2.weather.toLowerCase());
+      $('#block-day-3 .wi').addClass('wi-'+weather3.weather.toLowerCase());
 
-  //     $('#block-day-1 .calendar').text(act1.activity);
-  //     $('#block-day-2 .calendar').text(act2.activity);
-  //     $('#block-day-3 .calendar').text(act3.activity);
-  //     $('#second').show();
+      $('#block-day-1 .calendar').text(act1.activity);
+      $('#block-day-2 .calendar').text(act2.activity);
+      $('#block-day-3 .calendar').text(act3.activity);
+      $('#second').show();
 
-  //   });
-  // });
+    });
+  });
 }
 
 function updateView() {
