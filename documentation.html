@@ -107,7 +107,7 @@
                       <li><b>FlickrService</b>: </li>
                     </ul>
 
-                    In addition there is a Web Application published on <a href="http://188.226.183.46" target="_blank">http://188.226.183.46</a>(RESTinForm Service, the frontend).
+                    In addition there is a Web Application published on <a href="http://188.226.183.46" target="_blank">http://188.226.183.46</a> (RESTinForm Service, the frontend).
 
                 </div>
                 <div>
@@ -133,9 +133,9 @@
                 <div>
                     <h1>RESTinFormService - Process centric service</h1>
 
-                    The RESTinFormService it the process centric service which sends requests to all our developed services. It is hosted in <a href="https://restindirectorservice.herokuapp.com">https://restindirectorservice.herokuapp.com</a> made by two processes. The first process aims to gather information about the weather condition, the bmi of the authenticated user and motivational quotes related both to the weather and to the bmi.
+                    The RESTinFormService it the process centric service which sends requests to all our developed services. It is hosted in <a href="188.226.183.46:9091">188.226.183.46:9091</a> made by two processes. The first process aims to gather information about the weather condition, the bmi of the authenticated user and motivational quotes related both to the weather and to the bmi.
 
-                    <pre><code>GET https://restindirectorservice.herokuapp.com/project-director/food?callback=&#60;CALLBACK&#62;&amp;token=&#60;TOKEN&#62;</code></pre>
+                    <pre><code>GET 188.226.183.46:9091/project-director/food?callback=&#60;CALLBACK&#62;&amp;token=&#60;TOKEN&#62;</code></pre>
 
                     <pre><code>jQuery30090583399275290333725555919781042774309986270964_1421931432535(&#60;JSON RESPONSE&#62;)</code></pre>
 
@@ -155,9 +155,9 @@
                 <div>
                     <h1>FacebookService</h1>
                     
-                    The FacebookService is the web service which sends requests to the Facebook Graph API in order to know if all the requests that arrive to other services contain a valid <code>token</code>. This allows us to limit the use of all our developed services to only authenticated users. Our service is hosted in <a href="https://restinfacebookservice.herokuapp.com">https://restinfacebookservice.herokuapp.com</a>. The request must contain a <code>token</code> parameter as follows:
+                    The FacebookService is the web service which sends requests to the Facebook Graph API in order to know if all the requests that arrive to other services contain a valid <code>token</code>. This allows us to limit the use of all our developed services to only authenticated users. Our service is hosted in <a href="http://188.226.183.46:8020">http://188.226.183.46:8020</a>. The request must contain a <code>token</code> parameter as follows:
 
-                    <pre><code>GET https://restinfacebookservice.herokuapp.com/project-facebook/auth?token=&#60;TOKEN&#62;</code></pre>
+                    <pre><code>GET http://188.226.183.46:8020/project-facebook/auth?token=&#60;TOKEN&#62;</code></pre>
 
                     The Facebook Service asks to the Facebook Graph API (see How it works) if the given token is valid or not. In both cases the output json contain a <code>status</code> with a <code>message</code> and a <code>code</code>. <br/>In case the token is <b>not valid</b>, our service responds with the following json.
 
