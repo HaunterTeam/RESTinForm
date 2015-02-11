@@ -52,7 +52,6 @@ function getProfileInfo() {
 
 function send_request(obj) {
 
-  
   var url = "http://188.226.183.46/cross.php";
   var data_obj = {"token": access_token, "height": obj.height, "weight": obj.weight };
 
@@ -66,13 +65,11 @@ function send_request(obj) {
       type: 'POST',
       url: url,
       data: data_obj,
-      contentType: "application/json",
-      dataType: 'json',
       success: function(data) {
-        console.log('Response: ' + data);
+        console.log('Height and Weight sent! Response: ' + data);
         call_director();
       },
-      failure: function(errMsg) {
+      error: function(errMsg) {
         console.log(errMsg);
       }
   });
@@ -80,7 +77,7 @@ function send_request(obj) {
 
 function call_director() {
 
-  $.getJSON("https://restindirectorservice.herokuapp.com/project-director/weather?callback=?&token=" + access_token, function(response_p1){
+  $.getJSON("http://188.226.183.46/project-director/weather?callback=?&token=" + access_token, function(response_p1){
 
     console.log(response_p1);
 
@@ -92,7 +89,7 @@ function call_director() {
     weather2 = response_p1.result[1].weather;
     weather3 = response_p1.result[2].weather;
 
-    $.getJSON("https://restindirectorservice.herokuapp.com/project-director/food?callback=?&token=" + access_token, function(response_p2){
+    $.getJSON("http://188.226.183.46/project-director/food?callback=?&token=" + access_token, function(response_p2){
 
       console.log(response_p2);
 
