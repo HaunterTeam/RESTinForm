@@ -77,7 +77,7 @@ function send_request(obj) {
 
 function call_director() {
 
-  $.getJSON("http://188.226.183.46/project-director/weather?callback=?&token=" + access_token, function(response_p1){
+  $.getJSON("http://188.226.183.46:9091/project-director/weather?callback=?&token=" + access_token, function(response_p1){
 
     console.log(response_p1);
 
@@ -89,7 +89,7 @@ function call_director() {
     weather2 = response_p1.result[1].weather;
     weather3 = response_p1.result[2].weather;
 
-    $.getJSON("http://188.226.183.46/project-director/food?callback=?&token=" + access_token, function(response_p2){
+    $.getJSON("http://188.226.183.46:9091/project-director/food?callback=?&token=" + access_token, function(response_p2){
 
       console.log(response_p2);
 
